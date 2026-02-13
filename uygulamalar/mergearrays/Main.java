@@ -1,3 +1,4 @@
+package uygulamalar.mergearrays;
 import java.util.ArrayList;
 import java.util.Arrays;
 
