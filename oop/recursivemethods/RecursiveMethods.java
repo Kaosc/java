@@ -4,24 +4,41 @@ import java.util.Scanner;
 
 public class RecursiveMethods {
    public static void main(String[] args) {
-      // Özyinelemeli Metot Kullanmadan
       Scanner scan = new Scanner(System.in);
-      int faktoriyel = 1;
 
       System.out.print("Bir sayi giriniz: ");
       int sayi = scan.nextInt();
 
-      if (sayi < 0) {
-         System.out.println("Negatif sayilarin faktoriyeli olmaz.");
-         scan.close();
-         return;
-      }
+      int resultOfRecursive = getfactorialRecursive(sayi);
+      int resultOfNonRecursive = getfactorialNonRecursive(sayi);
 
-      for (int i = 1; i <= sayi; i++) {
+      System.out.println("Recursive: " + sayi + "!= " + resultOfRecursive);
+      System.out.println("Non-Recursive: " + sayi + "!= " + resultOfNonRecursive);
+      
+      scan.close();
+   }
+
+   // =================================
+   // Without using Recursive Method
+   // =================================
+   public static int getfactorialNonRecursive(int num) {
+      int faktoriyel = 1;
+
+      for (int i = 1; i <= num; i++) {
          faktoriyel = faktoriyel * i;
       }
 
-      System.out.println(sayi + "!= " + faktoriyel);
-      scan.close();
+      return faktoriyel;
+   }
+
+   // =================================
+   // Using Recursive Method
+   // =================================
+   public static int getfactorialRecursive(int num) {
+      if (num == 1) {
+         return 1;
+      } else {
+         return num * getfactorialRecursive(num - 1);
+      }
    }
 }
