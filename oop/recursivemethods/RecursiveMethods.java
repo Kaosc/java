@@ -14,7 +14,7 @@ public class RecursiveMethods {
 
       System.out.println("Recursive: " + sayi + "!= " + resultOfRecursive);
       System.out.println("Non-Recursive: " + sayi + "!= " + resultOfNonRecursive);
-      
+
       scan.close();
    }
 
