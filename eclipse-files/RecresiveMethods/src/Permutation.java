@@ -9,7 +9,7 @@ public class Permutation {
 
 		for (int i = 0; i < remaining.length(); i++) {
 
-			// remainingove chosen char
+			// remaining chosen char
 			String nextremaining = remaining.substring(0, i) + remaining.substring(i + 1);
 
 			// add chosen char
