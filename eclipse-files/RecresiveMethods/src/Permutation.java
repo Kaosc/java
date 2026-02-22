@@ -1,24 +1,26 @@
 public class Permutation {
 
-	static void f(String s, String str) {
+	static void generatePermutations(String remainingChars, String currentPermutation) {
 
-		if (s.length() == 0) {
-			System.out.println(str);
+		if (remainingChars.length() == 0) {
+			System.out.println("Permutation: " + currentPermutation);
 			return;
 		}
 
-		for (int i = 0; i < s.length(); i++) {
-			String newText = s.substring(0, i) + s.substring(i + 1);
-			String newStr = str + s.charAt(i);
+		for (int i = 0; i < remainingChars.length(); i++) {
 
-			f(newText, newStr);
+			// Remove the picked character from the remaining pool
+			String nextRemainingChars = remainingChars.substring(0, i) + remainingChars.substring(i + 1);
+
+			// Add the picked character to the current permutation
+			String nextPermutation = currentPermutation + remainingChars.charAt(i);
+
+			generatePermutations(nextRemainingChars, nextPermutation);
 		}
 	}
 
 	public static void main(String[] args) {
-		// Backtracking
-		// Bir stringteki karakterklerden anlamlı anlamsız
-		// en az 2 harfli kaç kelime oluşturuabileceğini bulan rekürsif metotu yazınız.
-		f("ABC", "");
+		String input = "ABC";
+		generatePermutations(input, "");
 	}
 }
