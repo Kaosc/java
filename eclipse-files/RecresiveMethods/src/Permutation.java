@@ -1,26 +1,26 @@
 public class Permutation {
 
-	static void generatePermutations(String remainingChars, String currentPermutation) {
+	static void gen(String remaining, String current) {
 
-		if (remainingChars.length() == 0) {
-			System.out.println("Permutation: " + currentPermutation);
+		if (remaining.length() == 0) {
+			System.out.println("Permutation: " + current);
 			return;
 		}
 
-		for (int i = 0; i < remainingChars.length(); i++) {
+		for (int i = 0; i < remaining.length(); i++) {
 
-			// Remove the picked character from the remaining pool
-			String nextRemainingChars = remainingChars.substring(0, i) + remainingChars.substring(i + 1);
+			// remainingove chosen char
+			String nextremaining = remaining.substring(0, i) + remaining.substring(i + 1);
 
-			// Add the picked character to the current permutation
-			String nextPermutation = currentPermutation + remainingChars.charAt(i);
+			// add chosen char
+			String nextcurrent = current + remaining.charAt(i);
 
-			generatePermutations(nextRemainingChars, nextPermutation);
+			gen(nextremaining, nextcurrent);
 		}
 	}
 
 	public static void main(String[] args) {
-		String input = "ABC";
-		generatePermutations(input, "");
+		String in = "ABC";
+		gen(in, "");
 	}
 }
