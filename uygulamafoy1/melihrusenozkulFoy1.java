@@ -1,5 +1,7 @@
 package uygulamafoy1;
 
+@SuppressWarnings("unused")
+
 public class melihrusenozkulFoy1 {
 
    static void uygulama1() {

@@ -1,3 +1,5 @@
+package oop.week_1_2;
+
 public class Permutation {
 
 	static void gen(String remaining, String current) {

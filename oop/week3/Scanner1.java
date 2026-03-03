@@ -1,13 +1,13 @@
-package oop.hafta3;
+package oop.week3;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
-/*dosya.txt dosyasındaki
- * 1) en uzun kelime ya da kelimeleri bulunuz
- * 2) kaç kelimeden oluştuğunu bulunuz.
- * 3) kaç kelimenin A harfi ile başladığını bulunuz.
- * */
+// dosya.txt dosyasındaki
+// en uzun kelime ya da kelimeleri bulunuz
+// kaç kelimeden oluştuğunu bulunuz.
+// kaç kelimenin A harfi ile başladığını bulunuz.
 
 public class Scanner1 {
 	public static void main(String[] args) throws IOException {

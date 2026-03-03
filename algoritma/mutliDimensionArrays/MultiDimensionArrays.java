@@ -1,5 +1,7 @@
 package algoritma.mutliDimensionArrays;
 
+@SuppressWarnings("unused")
+
 public class MultiDimensionArrays {
 
    public static void main(String[] args) {
