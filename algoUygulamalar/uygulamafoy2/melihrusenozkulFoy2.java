@@ -1,4 +1,4 @@
-package uygulamafoy2;
+package algoUygulamalar.uygulamafoy2;
 
 import java.util.HashMap;
 import java.util.Scanner;

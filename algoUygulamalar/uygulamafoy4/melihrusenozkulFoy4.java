@@ -1,4 +1,4 @@
-package uygulamafoy4;
+package algoUygulamalar.uygulamafoy4;
 
 import java.util.Scanner;
 

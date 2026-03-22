@@ -1,4 +1,4 @@
-package uygulamafoy1;
+package algoUygulamalar.uygulamafoy1;
 
 @SuppressWarnings("unused")
 

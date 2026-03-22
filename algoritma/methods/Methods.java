@@ -8,84 +8,64 @@ public class Methods {
 		double tpl = 0;
 		tpl = a + b;
 		System.out.println("toplam=" + tpl);
-		// System.out.println(a+b);
 	}
 
 	public static void toplama(int a, int b) {
 		double tpl = 0;
 		tpl = a + b;
 		System.out.println("int toplam=" + tpl);
-		// System.out.println(a+b);
 	}
 
-	public static void çıkarma(double a, double b) {
+	public static void cıkarma(double a, double b) {
 		double çıkar = 0;
 		çıkar = a - b;
 		System.out.println("çıkarma=" + çıkar);
 		çıkar = Math.abs(a - b);
 		System.out.println("negatif değer engeli=" + çıkar);
-		// System.out.println(a-b);
 	}
 
-	/*
-	 * public static void toplama(double a, int b)
-	 * {double tpl=0;
-	 * 
-	 * tpl=a+b;
-	 * System.out.println("toplam="+tpl);
-	 * //System.out.println(a+b);
-	 * }
-	 * 
-	 * public static void toplama(int x, double a, double b)
-	 * {double tpl=0;
-	 * 
-	 * tpl=a+b;
-	 * System.out.println("toplam="+tpl);
-	 * //System.out.println(a+b);
-	 * }
-	 */
-	public void çarp(double a, double b) {
+	public void carp(double a, double b) {
 		double çrp = 1;
 		çrp = a * b;
 		System.out.println("çarpma=" + çrp);
-		// System.out.println(a*b);
 	}
 
 	public void bol(double a, double b) {
 		double bol = 0;
 		bol = a / b;
 		System.out.println("bolme=" + bol);
-		// System.out.println(a/b);
 	}
 
 	public void mod(double a, double b) {
 		double md;
 		md = a % b;
 		System.out.println("mod=" + md);
-		// System.out.println(a/b);
 	}
 
 	public static void main(String[] args) {
 		toplama(36, 89);
 		toplama(36.0, 89.0);
-		çıkarma(36.0, 89.0);
+		cıkarma(36.0, 89.0);
+
 		// sınıf_Adı nesne_adı=new sınıf_adı();
-		Metot1 m = new Metot1();
-		m.çarp(36.0, 89.0);
+		Methods m = new Methods();
+
+		m.carp(36.0, 89.0);
 		m.bol(36.0, 89.0);
 		m.mod(36.0, 89.0);
+
 		Scanner s = new Scanner(System.in);
+
 		System.out.println("Yapmak istediğiniz işlemi seçiniz:");
-		System.out.println("Toplama için +" + "\nÇıkarma için -" +
-				"\nÇarpma için *" + "\nBölme için /");
+		System.out.println("Toplama için +" + "\nÇıkarma için -" + "\nÇarpma için *" + "\nBölme için /");
 		char c = s.next().charAt(0);
 
 		if (c == '+') {
 			toplama(s.nextDouble(), s.nextDouble());
 		} else if (c == '-') {
-			çıkarma(s.nextDouble(), s.nextDouble());
+			cıkarma(s.nextDouble(), s.nextDouble());
 		} else if (c == '*') {
-			m.çarp(s.nextDouble(), s.nextDouble());
+			m.carp(s.nextDouble(), s.nextDouble());
 		} else if (c == '/') {
 			m.bol(s.nextDouble(), s.nextDouble());
 		} else if (c == '%') {
@@ -93,6 +73,8 @@ public class Methods {
 		} else {
 			System.out.println("Geçersiz seçim");
 		}
+
+		s.close();
 	}
 
 }
