@@ -2,7 +2,7 @@ package uygulamafoy4;
 
 import java.util.Scanner;
 
-// @SuppressWarnings("unused")
+@SuppressWarnings("unused")
 
 public class melihrusenozkulFoy4 {
    public static Scanner scanner = new Scanner(System.in);
@@ -205,15 +205,232 @@ public class melihrusenozkulFoy4 {
    }
 
    static void uygulama7() {
+      String[] metin1 = { "Ben", "ezelden", "beridir", "hür", "yaşadım,", "hür", "yaşarım" };
+      String[] metin2 = { "Hakkıdır,", "hür", "yaşamış", "bayrağımın", "hürriyet" };
+
+      int ortakKelimeSayisi = 0;
+
+      for (int i = 0; i < metin1.length; i++) {
+         for (int j = 0; j < metin2.length; j++) {
+            if (metin1[i].equals(metin2[j])) {
+               ortakKelimeSayisi++;
+               System.out.println("Ortak kelime: " + metin1[i]);
+               System.out.println("Metin 1'deki index: " + i);
+               System.out.println("Metin 2'deki index: " + j);
+            }
+         }
+      }
+
+      System.out.println("Toplam ortak kelime sayısı: " + ortakKelimeSayisi);
    }
 
    static void uygulama8() {
+      String[][] menu = {
+            { "15.06.1915", "Üzüm Hoşafı", "Yok", "Üzüm Hoşafı" },
+            { "16.06.1915", "Yok", "Yok", "Yağlı Buğday Çorbası" },
+            { "18.07.1915", "Üzüm Hoşafı", "Yok", "Yok" },
+            { "21.07.1915", "Yarım Ekmek", "Yok", "Şekersiz Üzüm Hoşafı" }
+      };
+
+      int yokSayisi = 0;
+      int uzumHosafiSayisi = 0;
+      boolean yemeksizGun = false;
+
+      for (String[] gun : menu) {
+         int gunYokSayisi = 0;
+
+         for (int i = 1; i < gun.length; i++) {
+            if (gun[i].equals("Yok")) {
+               yokSayisi++;
+               gunYokSayisi++;
+            }
+
+            if (gun[i].equals("Üzüm Hoşafı")) {
+               uzumHosafiSayisi++;
+            }
+         }
+
+         if (gunYokSayisi == 3) {
+            yemeksizGun = true;
+         }
+      }
+
+      System.out.println("Toplam yok sayısı: " + yokSayisi);
+      System.out.println("Toplam üzüm hoşafı sayısı: " + uzumHosafiSayisi);
+      System.out.println("Yemeksiz Gün Sayısı: " + (yemeksizGun ? "Evet" : "Hayır"));
+
+      System.out.println("Akşam yemeği verilen günler ve yemek isimleri:");
+      for (String[] gun : menu) {
+         if (!gun[3].equals("Yok")) {
+            System.out.println(gun[0] + ": " + gun[3]);
+         }
+      }
    }
 
-   static void uygulama9() {
+   static void uygulama9(char[][] dizi) {
+
+      int toplam = 0;
+
+      for (char[] satir : dizi) {
+         for (char c : satir) {
+            if (!Character.isLetterOrDigit(c)) {
+               toplam++;
+            }
+         }
+      }
+
+      System.out.println("Harf ve sayısal karakterler dışındaki toplam karakter sayısı: " + toplam);
    }
 
    static void uygulama10() {
+      String[] dizi1 = { "İstiklal Marşı", "Çanakkale Şehitlerine", "Dur Yolcu", "Mehmetçik" };
+      String[] dizi2 = { "Çanakkale Şehitlerine", "Gençliğe Hitabe", "İstiklal Marşı" };
+
+      String[] merged = new String[dizi1.length + dizi2.length];
+      int index = 0;
+
+      for (String siir : dizi1) {
+         merged[index] = siir;
+         index++;
+      }
+
+      for (String siir : dizi2) {
+         boolean found = false;
+
+         for (String i : merged) {
+            if (siir.equals(i)) {
+               found = true;
+            }
+         }
+
+         if (!found) {
+            merged[index] = siir;
+            index++;
+         }
+      }
+
+      System.out.println("Oluşacak Dizi:");
+      for (int i = 0; i < index; i++) {
+         System.out.print(merged[i] + " ");
+      }
+   }
+
+   static void uygulama11() {
+      int[] sekil1 = { 5, 4, 3, 2, 1 };
+      int[] sekil2 = { 5, 3, 1, 3, 5 };
+      int[] sekil3 = { 1, 3, 5, 3, 1 };
+
+      int maxLen = 5;
+
+      System.out.println("1");
+      for (int yildiz : sekil1) {
+         for (int i = 0; i < yildiz; i++) {
+            System.out.print("*");
+         }
+
+         System.out.println();
+      }
+
+      System.out.println("2");
+      for (int yildiz : sekil2) {
+         int bosluk = (maxLen - yildiz) / 2;
+
+         for (int i = 0; i < bosluk; i++) {
+            System.out.print(" ");
+         }
+
+         for (int i = 0; i < yildiz; i++) {
+            System.out.print("*");
+         }
+
+         System.out.println();
+      }
+
+      System.out.println("3");
+      for (int yildiz : sekil3) {
+         int bosluk = (maxLen - yildiz) / 2;
+
+         for (int i = 0; i < bosluk; i++) {
+            System.out.print(" ");
+         }
+
+         for (int i = 0; i < yildiz; i++) {
+            System.out.print("*");
+         }
+
+         System.out.println();
+      }
+   }
+
+   // Dizileri kullanarak aşağıdaki gibi bir Pascal üçgenini elde ediniz ve ekrana
+   // yazdırınız.
+   static void uygulama12() {
+      int[][] pascal = new int[7][7];
+
+      for (int i = 0; i < pascal.length; i++) {
+         for (int j = 0; j <= i; j++) {
+            if (j == 0 || j == i) {
+               pascal[i][j] = 1;
+            } else {
+               pascal[i][j] = pascal[i - 1][j - 1] + pascal[i - 1][j];
+            }
+         }
+      }
+
+      System.out.println("Pascal Üçgeni:");
+      for (int i = 0; i < pascal.length; i++) {
+         for (int j = 0; j <= i; j++) {
+            System.out.print(pascal[i][j] + " ");
+         }
+         System.out.println();
+      }
+
+   }
+
+   static void uygulama13() {
+      int[][] A = new int[2][3];
+      int[][] B = new int[3][1];
+      int[][] C = new int[2][1];
+
+
+      /**
+       * A Matrisi:       B Matrisi:   C Matrisi:
+       * [ 1, 2, 3 ]     [ 2 ]         [ 20 ]
+       * [ 4, 5, 6 ]  x  [ 3 ]    =    [ 47 ]
+       *                 [ 4 ]
+       * 
+       * A'nun sütun sayısı (3) ile B'nin satır sayısı (3) eşit olduğu için çarpma işlemi yapılabilir.
+       */
+
+      System.out.println("A Matrisi için 6 adet değer giriniz:");
+      for (int i = 0; i < A.length; i++) {
+         for (int j = 0; j < A[i].length; j++) {
+            A[i][j] = scanner.nextInt();
+         }
+      }
+
+      System.out.println("B Matrisi için 3 adet değer giriniz:");
+      for (int i = 0; i < B.length; i++) {
+         for (int j = 0; j < B[i].length; j++) {
+            B[i][j] = scanner.nextInt();
+         }
+      }
+
+      for (int i = 0; i < C.length; i++) {
+         for (int j = 0; j < C[i].length; j++) {
+            for (int k = 0; k < A[i].length; k++) {
+               C[i][j] += A[i][k] * B[k][j];
+            }
+         }
+      }
+
+      System.out.println("C Matrisi:");
+      for (int i = 0; i < C.length; i++) {
+         for (int j = 0; j < C[i].length; j++) {
+            System.out.print(C[i][j] + " ");
+         }
+         System.out.println();
+      }
    }
 
    public static void main(String[] args) {
@@ -222,10 +439,20 @@ public class melihrusenozkulFoy4 {
       // uygulama3();
       // uygulama4();
       // uygulama5();
-      uygulama6();
-      uygulama7();
-      uygulama8();
-      uygulama9();
-      uygulama10();
+      // uygulama6();
+      // uygulama7();
+      // uygulama8();
+
+      char[][] dizi = {
+            { 'A', 'S', 'D', '1' },
+            { '@', '#', '$', '%' }
+      };
+
+      // uygulama9(dizi);
+
+      // uygulama10();
+      // uygulama11();
+      // uygulama12();
+      uygulama13();
    }
 }
