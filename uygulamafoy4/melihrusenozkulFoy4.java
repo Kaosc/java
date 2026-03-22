@@ -362,8 +362,6 @@ public class melihrusenozkulFoy4 {
       }
    }
 
-   // Dizileri kullanarak aşağıdaki gibi bir Pascal üçgenini elde ediniz ve ekrana
-   // yazdırınız.
    static void uygulama12() {
       int[][] pascal = new int[7][7];
 
