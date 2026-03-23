@@ -1,23 +1,67 @@
 package oopUygulamalar.uygulamaFoy1;
 
-// @SuppressWarnings("unused")
-
 public class melihrusenozkulFoy1 {
 
-   static void uygulama1() {
+   static int usAl(int num, int power) {
+      if (power == 0) {
+         return 1;
+      } else {
+         return num * usAl(num, --power);
+      }
    }
 
-   static void uygulama2() {
+   static int sepetTutari(int[] fiyatlar, int i, int sum) {
+      if (i == fiyatlar.length - 1) {
+         return sum + fiyatlar[i];
+      } else {
+         return sepetTutari(fiyatlar, i + 1, sum + fiyatlar[i]);
+      }
    }
 
-   static void uygulama3() {
+   // TODO: ??
+   static void permutasyon(String remaining, String current) {
+      if (remaining.length() == 0) {
+         System.out.println("Permüstasyon: " + current);
+         return;
+      }
+
+      for (int i = 0; i < remaining.length(); i++) {
+
+         String nextremaining = remaining.substring(0, i) + remaining.substring(i + 1);
+         String nextcurrent = current + remaining.charAt(i);
+
+         permutasyon(nextremaining, nextcurrent);
+      }
    }
 
-   static void uygulama4() {
+   static int basamakTopla(int num, int sum) {
+      if (num == 0) {
+         return sum;
+      }
+
+      // Sayı 10'a bölündüğüde son basamak virgül sonrası kalır, ve int atandığı için
+      // ondalık kısım atılır.
+      // Sayının 10'a bölümünden kalan ise son basamak olur.
+      return basamakTopla(num / 10, sum + num % 10);
    }
 
-   static void uygulama5() {
+   static int tersCevir(int num, double rev) {
+      if (num == 0) {
+         return (int) rev;
+      }
+
+      // Sayının 10'a bölündüğüde son basamak virgül sonrası kalır, ve int atandığı
+      // için ondalık kısım atılır.
+      // sayının 10'a bölümünden kalan ise son basamak olur. rev * 10 ile rev'i bir
+      // basamak sola kaydırır, num % 10 ile son basamağı ekler.
+      return tersCevir(num / 10, (rev * 10 + num % 10));
    }
 
-   public static void main(String[] args) {}
+   public static void main(String[] args) {
+      System.out.println("8'2: " + usAl(8, 2));
+      System.out.println("Sepet tutarı: " + sepetTutari(new int[] { 43, 53, 32 }, 0, 0));
+      permutasyon("ABC", "");
+      System.out.println("Basamak toplamı: " + basamakTopla(232324, 0));
+      System.out.println("Ters çevrilmiş sayı: " + tersCevir(12345, 0));
+   }
 }
