@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Scanner1 {
 	public static void main(String[] args) throws IOException {
 
-		String path = "E:\\dev\\java\\oop\\hafta3\\text.txt";
+		String path = "E:\\dev\\java\\oop\\hafta3\\texts\\text.txt";
 		File file = new File(path);
 		Scanner scanner = new Scanner(file);
 
