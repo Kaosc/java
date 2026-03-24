@@ -1,7 +1,5 @@
 package oopUygulamalar.uygulamaFoy4;
 
-// @SuppressWarnings("unused")
-
 public class melihrusenozkulFoy4 {
 
    static void uygulama1() {
@@ -16,8 +14,6 @@ public class melihrusenozkulFoy4 {
    static void uygulama4() {
    }
 
-   static void uygulama5() {
+   public static void main(String[] args) {
    }
-
-   public static void main(String[] args) {}
 }

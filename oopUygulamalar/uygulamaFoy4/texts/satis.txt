@@ -1,0 +1,3 @@
+Elma  5
+Ekmek 3
+Süt  4
