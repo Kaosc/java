@@ -1,40 +1,37 @@
 package oop.tumdersler;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class FileReaderWriter {
 
-	public static void main(String[] args) throws IOException  {
-		
-		FileReader f=new FileReader("C:\\Users\\Lenovo\\Desktop\\isim.txt");
-		
-		File s=new File("C:\\Users\\Lenovo\\Desktop\\sayi.txt");	
-		FileReader f1=new FileReader(s);
-		
-		FileWriter w=new FileWriter(s);
-		FileWriter w1=new FileWriter(s);
-		/*w.write("İftara da Az aldı! \n");
-		w.write("Ders de bitmedi gitti!");
-		w.write("Ama yani biz de insanız! \n");*/
-		w.append("ACIKTIMMMMMMMM!");
-		w.write("Ders de bitmedi gitti!");
-		w.close();
-		
-		/*w1.write("Hoca sıkıldığımı görüyor mu acaba?");
-	
-		w1.append("Saatte nerdeyse 3.30!");
-		w1.write("Neyse az kaldı az!");
-		w1.close();*/
+	private static final String NAMES_PATH = "E:\\dev\\java\\oop\\texts\\isim.txt";
+	private static final String NUMBERS_PATH = "E:\\dev\\java\\oop\\texts\\sayi.txt";
 
-		System.out.println((char)f1.read());
-		
-		int m=f.read();
-		while(m!=-1) {
-			System.out.print((char)m);
-			m=f.read();	}
+	public static void main(String[] args) throws IOException {
+		File numbersFile = new File(NUMBERS_PATH);
 
-		
+		try (FileWriter writer = new FileWriter(numbersFile, true)) {
+			writer.write(System.lineSeparator() + "Sample text written by FileWriter.");
+		}
 
+		System.out.println("First char from numbers file:");
+		try (FileReader numbersReader = new FileReader(numbersFile)) {
+			int firstChar = numbersReader.read();
+			if (firstChar != -1) {
+				System.out.println((char) firstChar);
+			}
+		}
+
+		System.out.println("Contents of isim.txt:");
+		try (FileReader namesReader = new FileReader(NAMES_PATH)) {
+			int value;
+			while ((value = namesReader.read()) != -1) {
+				System.out.print((char) value);
+			}
+		}
 	}
 
 }
