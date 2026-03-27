@@ -1,6 +1,5 @@
-Name Grade
-Ali 70
-Ayse 45
-Mehmet 88
-Zeynep 52
-Can 39
+56
+11
+23
+53
+34

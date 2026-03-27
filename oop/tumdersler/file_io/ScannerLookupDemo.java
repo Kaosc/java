@@ -18,6 +18,8 @@ public class ScannerLookupDemo {
 
 			while (fileScanner.hasNextLine()) {
 				String[] row = fileScanner.nextLine().split("\\s+");
+
+				// Ensure the row has at least two columns (name and value)
 				if (row.length < 2) {
 					continue;
 				}
