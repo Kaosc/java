@@ -1,4 +1,4 @@
-package oop.tumdersler;
+package oop.tumdersler.file_io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package oop.tumdersler;
+package oop.tumdersler.algorithms;
 
 import java.io.File;
 import java.io.IOException;

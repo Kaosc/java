@@ -1,39 +1,29 @@
 # tumdersler Topic Index
 
-This folder was cleaned and grouped by lecture topic.
+This folder is grouped into topic-based subfolders for easier navigation.
 
-## File and Path Basics
-- FileConstructorsDemo.java
-- FileMetadataDemo.java
+## file_io/
+- file_io/FileConstructorsDemo.java
+- file_io/FileMetadataDemo.java
+- file_io/FileReaderWriter.java
+- file_io/FileWriterAppendDemo.java
+- file_io/BufferedReaderWriterDemo.java
+- file_io/BufferedReaderLineDemo.java
+- file_io/PassFailFilterDemo.java
+- file_io/ByteStreamDemo.java
+- file_io/ScannerFileReadDemo.java
+- file_io/ScannerLookupDemo.java
+- file_io/GradeAverageCalculator.java
+- file_io/AsciiTableWriterDemo.java
 
-## Reader/Writer (Character I/O)
-- FileReaderWriter.java
-- FileWriterAppendDemo.java
+## algorithms/
+- algorithms/EvenOddSeparationDemo.java
+- algorithms/ScannerNumberStatsDemo.java
+- algorithms/StringSplitDemo.java
+- algorithms/CharAsciiDemo.java
 
-## Buffered I/O
-- BufferedReaderWriterDemo.java
-- BufferedReaderLineDemo.java
-- PassFailFilterDemo.java
-
-## Byte Stream I/O
-- ByteStreamDemo.java
-
-## Scanner-Based Exercises
-- ScannerFileReadDemo.java
-- ScannerNumberStatsDemo.java
-- ScannerLookupDemo.java
-- EvenOddSeparationDemo.java
-
-## String and Type Basics
-- StringSplitDemo.java
-- CharAsciiDemo.java
-
-## Practical Examples
-- GradeAverageCalculator.java
-- AsciiTableWriterDemo.java
-
-## Removed as Duplicates or Unnecessary
-- F_R_W.java (duplicate File constructor demo)
-- Scanner1.java (subset of ScannerNumberStatsDemo)
-- ScOr.java (older duplicate of EvenOddSeparationDemo)
-- IOStream.java (overlap with ByteStreamDemo)
+## Removed as Duplicates
+- F_R_W.java
+- Scanner1.java
+- ScOr.java
+- IOStream.java

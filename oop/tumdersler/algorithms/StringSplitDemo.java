@@ -1,4 +1,4 @@
-package oop.tumdersler;
+package oop.tumdersler.algorithms;
 
 public class StringSplitDemo {
 
