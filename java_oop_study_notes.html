@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Sora:wght@300;400;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #21262d;
+    --accent: #f78166;
+    --accent2: #79c0ff;
+    --accent3: #56d364;
+    --accent4: #d2a8ff;
+    --accent5: #ffa657;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --tag-bg: #1f2937;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 32px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    background: var(--accent);
+    color: #000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .search-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .search-input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px 9px 36px;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .search-input:focus { border-color: var(--accent2); }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+  }
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .tab {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.3px;
+  }
+  .tab:hover { border-color: var(--accent2); color: var(--accent2); }
+  .tab.active { background: var(--accent2); color: #000; border-color: var(--accent2); }
+
+  main {
+    padding: 28px 32px;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .section {
+    margin-bottom: 36px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-count {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--tag-bg);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: default;
+  }
+  .card:hover {
+    border-color: #30363d;
+    transform: translateY(-1px);
+  }
+
+  .card-method {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card-desc {
+    font-size: 12.5px;
+    color: #c9d1d9;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .card-example {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: #a5d6ff;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .tip {
+    background: rgba(255,163,87,0.08);
+    border-left: 3px solid var(--accent5);
+    border-radius: 0 6px 6px 0;
+    padding: 7px 10px;
+    font-size: 11.5px;
+    color: #e3b88a;
+    line-height: 1.5;
+  }
+  .tip::before { content: "⚡ "; }
+
+  .returns {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    background: rgba(121,192,255,0.12);
+    color: var(--accent2);
+    border: 1px solid rgba(121,192,255,0.25);
+  }
+
+  .hidden { display: none !important; }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .stat-bar {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 4px;
+  }
+  .stat-bar span { color: var(--accent3); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="badge">JAVA OOP</div>
+    <div>
+      <h1>Sınav Notları — Metot Referansı</h1>
+      <div class="subtitle">File I/O · Collections · String · Scanner ve daha fazlası</div>
+    </div>
+  </div>
+  <div class="search-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="search" type="text" placeholder="Metot ara... örn: readLine, split, parseInt">
+    </div>
+  </div>
+  <div class="filter-tabs" id="tabs">
+    <div class="tab active" data-filter="all">Tümü</div>
+    <div class="tab" data-filter="file">File</div>
+    <div class="tab" data-filter="reader-writer">Reader / Writer</div>
+    <div class="tab" data-filter="stream">Streams</div>
+    <div class="tab" data-filter="scanner">Scanner</div>
+    <div class="tab" data-filter="string">String</div>
+    <div class="tab" data-filter="collections">Collections</div>
+    <div class="tab" data-filter="system">System / Integer</div>
+  </div>
+</header>
+
+<main id="main">
+</main>
+
+<script>
+const data = [
+  // ─── FILE ───────────────────────────────────────────────────────────
+  {
+    cat: "file", color: "#f78166", label: "File",
+    methods: [
+      {
+        name: "exists()",
+        returns: "boolean",
+        desc: "Dosya veya dizinin gerçekten var olup olmadığını kontrol eder. Okuma/yazma öncesi mutlaka kullan.",
+        example: `File f = new File("data.txt");\nif (f.exists()) System.out.println("Var!");`,
+        tip: "exists() false dönerse createNewFile() ile oluşturabilirsin."
+      },
+      {
+        name: "createNewFile()",
+        returns: "boolean",
+        desc: "Yeni ve boş bir dosya oluşturur. Dosya zaten varsa false döner, yoksa true ve dosyayı yaratır. IOException fırlatır.",
+        example: `File f = new File("log.txt");\nif (!f.exists()) f.createNewFile();`,
+        tip: "throws IOException yazmayı unutma — try-catch veya throws."
+      },
+      {
+        name: "getPath()",
+        returns: "String",
+        desc: "File nesnesi oluşturulurken verilen path'i aynen döner (göreceli veya mutlak olabilir).",
+        example: `File f = new File("data/notes.txt");\nSystem.out.println(f.getPath()); // data/notes.txt`,
+        tip: null
+      },
+      {
+        name: "getName()",
+        returns: "String",
+        desc: "Sadece dosyanın adını döner, klasör yolunu değil.",
+        example: `File f = new File("data/notes.txt");\nSystem.out.println(f.getName()); // notes.txt`,
+        tip: null
+      },
+      {
+        name: "getParent()",
+        returns: "String",
+        desc: "Dosyanın bulunduğu üst klasörü String olarak döner. Üst klasör yoksa null döner.",
+        example: `File f = new File("data/notes.txt");\nSystem.out.println(f.getParent()); // data`,
+        tip: "Root'ta bir dosya için null döner — null check yap."
+      },
+      {
+        name: "canRead() / canWrite()",
+        returns: "boolean",
+        desc: "OS izinlerine göre dosyanın okunabilir/yazılabilir olup olmadığını kontrol eder.",
+        example: `File f = new File("data.txt");\nSystem.out.println(f.canRead());  // true/false`,
+        tip: null
+      },
+      {
+        name: "isFile()",
+        returns: "boolean",
+        desc: "File nesnesi bir dosyayı (klasör değil) temsil ediyorsa true döner.",
+        example: `File f = new File("notes.txt");\nif (f.isFile()) { /* dosya */ }`,
+        tip: "isDirectory() ile karşılıklı kullanılır."
+      },
+      {
+        name: "isDirectory()",
+        returns: "boolean",
+        desc: "File nesnesi bir klasörü temsil ediyorsa true döner.",
+        example: `File f = new File("src/");\nif (f.isDirectory()) { /* klasör */ }`,
+        tip: null
+      },
+      {
+        name: "length()",
+        returns: "long",
+        desc: "Dosyanın boyutunu byte cinsinden döner. Klasörler için 0 veya belirsiz değer döner.",
+        example: `File f = new File("data.txt");\nlong bytes = f.length();\nSystem.out.println(bytes + " bytes");`,
+        tip: "long tipinde döner — int'e doğrudan atama yapma."
+      }
+    ]
+  },
+
+  // ─── READER / WRITER ────────────────────────────────────────────────
+  {
+    cat: "reader-writer", color: "#79c0ff", label: "Reader / Writer",
+    methods: [
+      {
+        name: "FileReader.read()",
+        returns: "int",
+        desc: "Tek bir karakter okur ve int olarak döner. Dosya sonuna gelince -1 döner. Çok yavaş — direkt kullanmak yerine BufferedReader'a sar.",
+        example: `FileReader fr = new FileReader("f.txt");\nint c;\nwhile ((c = fr.read()) != -1)\n    System.out.print((char) c);\nfr.close();`,
+        tip: "Dönen int'i (char) ile cast etmeden ekrana yazdıramazsın."
+      },
+      {
+        name: "FileWriter.write(String) / write(int)",
+        returns: "void",
+        desc: "Dosyaya String veya tek karakter (int olarak) yazar. Default olarak dosyayı sıfırdan başlatır (overwrite). Append için FileWriter(f, true) kullan.",
+        example: `FileWriter fw = new FileWriter("out.txt");\nfw.write("Merhaba!\\n");\nfw.close();`,
+        tip: "append modunu açmak için: new FileWriter(\"out.txt\", true)"
+      },
+      {
+        name: "FileWriter.append(String)",
+        returns: "FileWriter",
+        desc: "Dosyanın sonuna içerik ekler. FileWriter(f, true) ile aynı etkiyi yaratır ama zincirleme çağrıya izin verir.",
+        example: `FileWriter fw = new FileWriter("log.txt", true);\nfw.append("Yeni satır\\n");\nfw.close();`,
+        tip: null
+      },
+      {
+        name: "BufferedReader.readLine()",
+        returns: "String",
+        desc: "Bir satırı okur, satır sonu karakterini dönen String'e dahil etmez. Dosya bitince null döner.",
+        example: `BufferedReader br = new BufferedReader(new FileReader("f.txt"));\nString line;\nwhile ((line = br.readLine()) != null)\n    System.out.println(line);\nbr.close();`,
+        tip: "null kontrolü şart — aksi halde NullPointerException!"
+      },
+      {
+        name: "BufferedWriter.write(String)",
+        returns: "void",
+        desc: "Buffered olarak yazar. Tek başına newline eklemez — bunun için newLine() kullan.",
+        example: `BufferedWriter bw = new BufferedWriter(new FileWriter("f.txt"));\nbw.write("Satır 1");\nbw.newLine();\nbw.close();`,
+        tip: null
+      },
+      {
+        name: "BufferedWriter.newLine()",
+        returns: "void",
+        desc: "Platform bağımsız satır sonu ekler (\\n veya \\r\\n). \\n yazmaktan daha güvenli.",
+        example: `bw.write("İlk satır");\nbw.newLine();\nbw.write("İkinci satır");`,
+        tip: "Windows'ta \\n yerine \\r\\n gerekir — newLine() bunu otomatik halleder."
+      },
+      {
+        name: "close()",
+        returns: "void",
+        desc: "Stream/Reader/Writer'ı kapatır ve buffer'ı flush eder. Kapatmazsan veriler diske yazılmayabilir!",
+        example: `// En güvenli yol: try-with-resources\ntry (BufferedWriter bw = new BufferedWriter(new FileWriter("f.txt"))) {\n    bw.write("veri");\n} // otomatik kapatılır`,
+        tip: "try-with-resources kullan — manuel close() fırlatabilir exception."
+      }
+    ]
+  },
+
+  // ─── STREAMS ────────────────────────────────────────────────────────
+  {
+    cat: "stream", color: "#56d364", label: "Byte Streams",
+    methods: [
+      {
+        name: "FileInputStream.read()",
+        returns: "int",
+        desc: "Dosyadan 1 byte okur, 0-255 arası int döner. Dosya sonu için -1 döner. Metin değil binary dosyalar içindir.",
+        example: `FileInputStream fis = new FileInputStream("img.png");\nint b;\nwhile ((b = fis.read()) != -1)\n    // byte işle\nfis.close();`,
+        tip: "Karakter dosyası için FileReader daha doğru tercih."
+      },
+      {
+        name: "FileInputStream.read(byte[])",
+        returns: "int",
+        desc: "Birden fazla byte'ı bir seferde okur — çok daha hızlı. Kaç byte okunduğunu döner, dosya sonu için -1.",
+        example: `byte[] buf = new byte[1024];\nint bytesRead;\nwhile ((bytesRead = fis.read(buf)) != -1) {\n    fos.write(buf, 0, bytesRead);\n}`,
+        tip: "write(buf, 0, bytesRead) — son chunk'ta buffer tam dolu olmayabilir!"
+      },
+      {
+        name: "FileOutputStream.write(int)",
+        returns: "void",
+        desc: "Tek bir byte yazar (int'in sadece en düşük 8 biti kullanılır).",
+        example: `FileOutputStream fos = new FileOutputStream("out.bin");\nfos.write(65); // 'A' karakteri\nfos.close();`,
+        tip: null
+      },
+      {
+        name: "FileOutputStream.write(byte[], offset, length)",
+        returns: "void",
+        desc: "byte array'den offset pozisyonundan başlayarak length kadar byte yazar.",
+        example: `fos.write(buffer, 0, bytesRead);`,
+        tip: "length kısmına buffer.length değil bytesRead yaz — son parçada hata olur aksi halde."
+      }
+    ]
+  },
+
+  // ─── SCANNER ────────────────────────────────────────────────────────
+  {
+    cat: "scanner", color: "#d2a8ff", label: "Scanner",
+    methods: [
+      {
+        name: "hasNext()",
+        returns: "boolean",
+        desc: "Scanner'da okunacak başka token var mı? Dosya okuma döngülerinde kullanılır.",
+        example: `Scanner sc = new Scanner(new File("data.txt"));\nwhile (sc.hasNext()) {\n    System.out.println(sc.next());\n}\nsc.close();`,
+        tip: null
+      },
+      {
+        name: "hasNextLine()",
+        returns: "boolean",
+        desc: "Okunacak başka satır var mı kontrol eder. readLine() döngüsünden önce kullanılır.",
+        example: `while (sc.hasNextLine()) {\n    String line = sc.nextLine();\n}`,
+        tip: null
+      },
+      {
+        name: "hasNextInt()",
+        returns: "boolean",
+        desc: "Bir sonraki token int olarak parse edilebilir mi? InputMismatchException'dan korur.",
+        example: `if (sc.hasNextInt()) {\n    int n = sc.nextInt();\n}`,
+        tip: "Kullanıcı yanlış input girince patlamamak için şart."
+      },
+      {
+        name: "next()",
+        returns: "String",
+        desc: "Boşlukla ayrılmış bir sonraki token'ı okur. Satır sonu değil, boşluğa kadar okur.",
+        example: `Scanner sc = new Scanner(System.in);\nString word = sc.next(); // ilk kelime`,
+        tip: "Boşlukları atlar, sadece kelime okur — tam satır için nextLine() kullan."
+      },
+      {
+        name: "nextLine()",
+        returns: "String",
+        desc: "Tüm satırı okur ve satır sonu karakterini tüketir. nextInt() sonrası çağırınca boş String dönebilir!",
+        example: `int n = sc.nextInt();\nsc.nextLine(); // buffer temizle!\nString s = sc.nextLine();`,
+        tip: "⚠️ nextInt() / nextDouble() sonrası bir tane ekstra nextLine() çağır — klasik tuzak!"
+      },
+      {
+        name: "nextInt()",
+        returns: "int",
+        desc: "Bir sonraki token'ı int olarak okur. Token int değilse InputMismatchException fırlatır.",
+        example: `Scanner sc = new Scanner(System.in);\nint sayi = sc.nextInt();`,
+        tip: "Satır sonunu tüketmez — sonrasına nextLine() ekle."
+      }
+    ]
+  },
+
+  // ─── STRING ────────────────────────────────────────────────────────
+  {
+    cat: "string", color: "#ffa657", label: "String",
+    methods: [
+      {
+        name: "split(String regex)",
+        returns: "String[]",
+        desc: "Verilen regex desenine göre String'i parçalara böler, String[] döner.",
+        example: `String csv = "Ali,Veli,Ayşe";\nString[] parts = csv.split(",");\n// parts[0]="Ali", parts[1]="Veli"`,
+        tip: "Nokta (.) için split(\"\\\\.\") yaz — regex özel karakter!"
+      },
+      {
+        name: "charAt(int index)",
+        returns: "char",
+        desc: "Belirtilen index'teki karakteri döner. Index 0'dan başlar.",
+        example: `String s = "Java";\nchar c = s.charAt(0); // 'J'`,
+        tip: "index >= length() ise StringIndexOutOfBoundsException!"
+      },
+      {
+        name: "length()",
+        returns: "int",
+        desc: "String'deki karakter sayısını döner. Array'deki .length ile karıştırma — String'de parantez var.",
+        example: `String s = "Merhaba";\nint len = s.length(); // 7`,
+        tip: "Array: arr.length (parantez yok) | String: s.length() (parantez var)"
+      },
+      {
+        name: "substring(int begin, int end)",
+        returns: "String",
+        desc: "begin (dahil) ile end (hariç) arasındaki kısmı döner.",
+        example: `String s = "Merhaba";\nString sub = s.substring(0, 3); // "Mer"`,
+        tip: "end index hariç! substring(0,3) → 0,1,2. indeksler."
+      },
+      {
+        name: "equals(String)",
+        returns: "boolean",
+        desc: "İki String'i içerik olarak karşılaştırır. == operatörü referans karşılaştırır — asla == kullanma!",
+        example: `String a = "java";\nif (a.equals("java")) System.out.println("Eşit");`,
+        tip: "\"sabit\".equals(degisken) yaz — NullPointerException'dan korur."
+      },
+      {
+        name: "equalsIgnoreCase(String)",
+        returns: "boolean",
+        desc: "Büyük/küçük harf farkı gözetmeksizin karşılaştırır.",
+        example: `"Java".equalsIgnoreCase("JAVA"); // true`,
+        tip: null
+      },
+      {
+        name: "startsWith(String prefix)",
+        returns: "boolean",
+        desc: "String belirtilen prefix ile başlıyorsa true döner.",
+        example: `"Merhaba".startsWith("Mer"); // true`,
+        tip: null
+      },
+      {
+        name: "toLowerCase()",
+        returns: "String",
+        desc: "Tüm karakterleri küçük harfe çevirir. String immutable — orijinal değişmez, yeni String döner.",
+        example: `String s = "JAVA";\nString kucuk = s.toLowerCase(); // "java"`,
+        tip: "String'ler immutable! s = s.toLowerCase() şeklinde atama yap."
+      },
+      {
+        name: "replace(String old, String new)",
+        returns: "String",
+        desc: "Tüm eşleşen kısımları yeni değerle değiştirir. Orijinal String değişmez.",
+        example: `String s = "aa bb aa";\nString r = s.replace("aa", "cc"); // "cc bb cc"`,
+        tip: "replaceFirst() sadece ilk eşleşmeyi değiştirir."
+      },
+      {
+        name: "trim()",
+        returns: "String",
+        desc: "String'in başındaki ve sonundaki boşlukları (\\t, \\n dahil) kaldırır.",
+        example: `String s = "  merhaba  ";\nSystem.out.println(s.trim()); // "merhaba"`,
+        tip: "Dosyadan okunan satırların sonunda \\r kalabilir — trim() bunu temizler."
+      }
+    ]
+  },
+
+  // ─── COLLECTIONS ────────────────────────────────────────────────────
+  {
+    cat: "collections", color: "#58a6ff", label: "ArrayList / List",
+    methods: [
+      {
+        name: "add(E element)",
+        returns: "boolean",
+        desc: "Listenin sonuna eleman ekler. Her zaman true döner (kapasite dışında bir hata yoksa).",
+        example: `List<String> liste = new ArrayList<>();\nliste.add("Elma");\nliste.add("Armut");`,
+        tip: "add(index, element) ile belirli bir pozisyona da ekleyebilirsin."
+      },
+      {
+        name: "size()",
+        returns: "int",
+        desc: "Listedeki eleman sayısını döner. Array'deki .length ile aynı ama burada metot.",
+        example: `List<String> l = new ArrayList<>();\nl.add("a");\nSystem.out.println(l.size()); // 1`,
+        tip: "Array: arr.length | List: list.size() — parantez farkına dikkat!"
+      }
+    ]
+  },
+
+  // ─── SYSTEM / INTEGER ────────────────────────────────────────────────
+  {
+    cat: "system", color: "#ec6547", label: "System / Integer",
+    methods: [
+      {
+        name: "Integer.parseInt(String)",
+        returns: "int",
+        desc: "Sayısal bir String'i int'e çevirir. Sayısal olmayan karakter içerirse NumberFormatException fırlatır.",
+        example: `String s = "42";\nint n = Integer.parseInt(s); // 42`,
+        tip: "Önce trim() çağır — boşluk varsa NumberFormatException!"
+      },
+      {
+        name: "System.out.println()",
+        returns: "void",
+        desc: "Ekrana satır sonu ile yazar. print() satır sonu eklemez.",
+        example: `System.out.println("Merhaba!"); // + yeni satır\nSystem.out.print("Yanyana ");   // satır sonu yok`,
+        tip: null
+      },
+      {
+        name: "System.lineSeparator()",
+        returns: "String",
+        desc: "Platform bağımsız satır sonu karakterini döner (\\n veya \\r\\n).",
+        example: `String satir = "veri" + System.lineSeparator();\nfw.write(satir);`,
+        tip: "BufferedWriter.newLine() ile aynı amaca hizmet eder — stream içinde newLine() daha kolay."
+      },
+      {
+        name: "System.in",
+        returns: "InputStream",
+        desc: "Klavye girişini temsil eden standart input stream'i. Scanner ile sarılarak kullanılır.",
+        example: `Scanner sc = new Scanner(System.in);\nint x = sc.nextInt();`,
+        tip: null
+      }
+    ]
+  }
+];
+
+let activeFilter = "all";
+let searchQuery = "";
+
+function buildUI() {
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+
+  let totalVisible = 0;
+
+  data.forEach(section => {
+    const methods = section.methods.filter(m => {
+      const matchFilter = activeFilter === "all" || section.cat === activeFilter;
+      const q = searchQuery.toLowerCase();
+      const matchSearch = !q || m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q);
+      return matchFilter && matchSearch;
+    });
+
+    if (methods.length === 0) return;
+    totalVisible += methods.length;
+
+    const sec = document.createElement("div");
+    sec.className = "section";
+    sec.innerHTML = `
+      <div class="section-header">
+        <div class="section-dot" style="background:${section.color}"></div>
+        <div class="section-title" style="color:${section.color}">${section.label}</div>
+        <div class="section-count">${methods.length} metot</div>
+      </div>
+      <div class="cards-grid">
+        ${methods.map(m => `
+          <div class="card">
+            <div class="card-method" style="color:${section.color}">${m.name}</div>
+            <div class="returns">→ ${m.returns}</div>
+            <div class="card-desc">${m.desc}</div>
+            <div class="card-example">${m.example}</div>
+            ${m.tip ? `<div class="tip">${m.tip}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>
+    `;
+    main.appendChild(sec);
+  });
+
+  if (totalVisible === 0) {
+    main.innerHTML = `<div class="empty-state">🔍 "<strong>${searchQuery}</strong>" için sonuç bulunamadı.</div>`;
+  }
+}
+
+document.getElementById("search").addEventListener("input", e => {
+  searchQuery = e.target.value;
+  buildUI();
+});
+
+document.getElementById("tabs").addEventListener("click", e => {
+  const tab = e.target.closest(".tab");
+  if (!tab) return;
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  tab.classList.add("active");
+  activeFilter = tab.dataset.filter;
+  buildUI();
+});
+
+buildUI();
+</script>
+</body>
+</html>
