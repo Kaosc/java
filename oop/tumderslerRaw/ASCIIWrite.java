@@ -5,7 +5,7 @@ import java.io.*;
 public class ASCIIWrite {
 	public static void main(String[] args) throws IOException {
 
-		FileWriter w = new FileWriter("E:\\dev\\Java\\oop\\texts\\YMZ.txt");
+		FileWriter w = new FileWriter("E:/dev/Java/oop/texts/YMZ.txt");
 
 		w.write("ASCII" + "\t Karakter");
 

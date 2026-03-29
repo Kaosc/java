@@ -8,7 +8,7 @@ public class ScannerOrnek2 {
 	public static void main(String[] args) throws IOException {
 		int c = 0, t = 0;
 
-		File f = new File("E:\\dev\\Java\\oop\\texts\\sayi.txt");
+		File f = new File("E:/dev/Java/oop/texts/sayi.txt");
 		Scanner s = new Scanner(f);
 		Scanner s1 = new Scanner(f);
 
@@ -28,7 +28,7 @@ public class ScannerOrnek2 {
 
 		int a, x = 0, y = 0;
 
-		while (s1.hasNext()) {
+		while (s1.hasNextInt()) {
 			a = s1.nextInt();
 			if (a % 2 == 0) {
 				cift[x] = a;

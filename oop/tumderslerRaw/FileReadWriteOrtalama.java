@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class FileReadWriteOrtalama {
 
 	public static void main(String[] args) throws IOException {
-		File vizeler = new File("E:\\dev\\Java\\oop\\texts\\vize.txt");
-		File finaller = new File("E:\\dev\\Java\\oop\\texts\\final.txt");
+		File vizeler = new File("E:/dev/Java/oop/texts/vize.txt");
+		File finaller = new File("E:/dev/Java/oop/texts/final.txt");
 
-		FileWriter ortalamalar = new FileWriter("E:\\dev\\Java\\oop\\texts\\ort.txt");
+		FileWriter ortalamalar = new FileWriter("E:/dev/Java/oop/texts/ort.txt");
 
 		Scanner s = new Scanner(vizeler);
 		Scanner s1 = new Scanner(finaller);
@@ -22,8 +22,7 @@ public class FileReadWriteOrtalama {
 			y = s1.nextInt();
 			ort = (x * 0.4) + (y * 0.6);
 
-			ortalamalar.write(String.valueOf(ort + "\n"));
-			ortalamalar.write(System.lineSeparator());
+			ortalamalar.write(Double.toString(ort) + System.lineSeparator());
 		}
 
 		s.close();

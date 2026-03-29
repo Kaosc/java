@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Scanner1 {
 	public static void main(String[] args) throws IOException {
-		String yol = "E:\\dev\\Java\\oop\\texts\\isim.txt";
+		String yol = "E:/dev/Java/oop/texts/isim.txt";
 		File f1 = new File(yol);
 
 		Scanner s = new Scanner(f1);

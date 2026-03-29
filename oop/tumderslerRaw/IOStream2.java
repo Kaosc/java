@@ -13,8 +13,8 @@ public class IOStream2 {
 		 * FileInputStream, FileOutStream
 		 */
 
-		FileInputStream f1 = new FileInputStream("E:\\dev\\Java\\oop\\texts\\sayi.txt");
-		FileOutputStream f2 = new FileOutputStream("E:\\dev\\Java\\oop\\texts\\m.txt");
+		FileInputStream f1 = new FileInputStream("E:/dev/Java/oop/texts/sayi.txt");
+		FileOutputStream f2 = new FileOutputStream("E:/dev/Java/oop/texts/m.txt");
 
 		int a = f1.read();
 		byte[] d = new byte[20];

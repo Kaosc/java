@@ -9,33 +9,32 @@ import java.io.IOException;
 
 public class FileVsBuffer {
 	public static void main(String[] args) throws IOException {
-		File m = new File("C:\\Users\\Lenovo\\Desktop\\vize.txt");
-		File n = new File("C:\\Users\\Lenovo\\Desktop\\ort.txt");
+		File f = new File("E:/dev/java/oop/texts/vize.txt");
+		File f2 = new File("E:/dev/java/oop/texts/ort.txt");
 
-		FileReader f = new FileReader(m);
-		FileWriter e = new FileWriter(n);
+		BufferedReader br = new BufferedReader(new FileReader(f));
+		BufferedWriter bw = new BufferedWriter(new FileWriter(f2));
 
-		BufferedReader b = new BufferedReader(f);
-		BufferedWriter w = new BufferedWriter(e);
-
-		b.readLine();
+		br.readLine();
 		String s;
 
-		while ((s = b.readLine()) != null) {
+		while ((s = br.readLine()) != null) {
 
-			String[] d = s.split("\\s+");
-			int not = Integer.parseInt(d[1].trim());
+			String[] line = s.split("\\s+");
+
+			String name = line[0].trim();
+			int not = Integer.parseInt(line[1].trim());
 
 			if (not >= 50) {
-				System.out.println(d[0] + " Geçti");
-				w.append(d[0].trim() + "\n");
+				System.out.println(name + ": fail");
+				bw.append(name + "\n");
 			} else {
-				System.out.println(d[0] + " Kaldı");
+				System.out.println(name + ": pass");
 			}
 
 		}
-		
-		b.close();
-		w.close();
+
+		br.close();
+		bw.close();
 	}
 }

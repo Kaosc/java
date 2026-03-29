@@ -6,8 +6,8 @@ public class FileVsBuffer2 {
 
 	public static void main(String[] args) throws IOException {
 
-		// FileWriter y=new FileWriter("E:\\dev\\Java\\oop\\texts\\sayi.txt");
-		FileReader r = new FileReader("E:\\dev\\Java\\oop\\texts\\sayi.txt");
+		// FileWriter y=new FileWriter("E:/dev/Java/oop/texts/sayi.txt");
+		FileReader r = new FileReader("E:/dev/Java/oop/texts/sayi.txt");
 
 		// BufferedWriter b=new BufferedWriter(y);
 		BufferedReader b2 = new BufferedReader(r);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ScannerOrnek3 {
 	public static void main(String[] args) throws IOException {
-		File f = new File("E:\\dev\\Java\\oop\\texts\\dosya.txt");
+		File f = new File("E:/dev/Java/oop/texts/dosya.txt");
 
 		// With the scanner get the data from file
 		Scanner sc = new Scanner(f);

@@ -13,8 +13,8 @@ public class ScannerOrnek {
 	}
 
 	public static void main(String[] args) throws IOException {
-		File f = new File("E:\\dev\\Java\\oop\\texts\\isim.txt");
-		File f1 = new File("E:\\dev\\Java\\oop\\texts\\sayi.txt");
+		File f = new File("E:/dev/Java/oop/texts/isim.txt");
+		File f1 = new File("E:/dev/Java/oop/texts/sayi.txt");
 
 		Scanner s = new Scanner(f);
 		Scanner s1 = new Scanner(f1);
@@ -30,13 +30,16 @@ public class ScannerOrnek {
 			System.out.println(s.nextLine());
 		}
 
-		// hasNextInt() or hasNext()
 		// Read numbers from the file and count how many are negative
 		while (s1.hasNext()) {
-			if (s1.nextInt() < 0) {
-				n++;
+			if (s1.hasNextInt()) {
+				if (s1.nextInt() < 0) {
+					n++;
+				}
+				i++;
+			} else {
+				s1.next(); // Skip non-integer tokens
 			}
-			i++;
 		}
 
 		System.out.println(i + " sayıdan " + n + " tanesi negatif");

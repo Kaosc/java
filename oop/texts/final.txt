@@ -1,5 +1,5 @@
-65
-75
-90
-40
-55
+ahmet 65
+ali 75
+ayşe 90
+mehmet 40
+fatma 55

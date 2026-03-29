@@ -9,7 +9,7 @@ public class ScannerOrnek1 {
 	public static void main(String[] args) throws IOException {
 		int c = 0, t = 0;
 
-		File f = new File("C:\\Users\\Lenovo\\Desktop\\sayi.txt");
+		File f = new File("E:/dev/java/oop/texts/sayi.txt");
 		Scanner s = new Scanner(f);
 		Scanner s1 = new Scanner(f);
 
@@ -29,11 +29,11 @@ public class ScannerOrnek1 {
 		int[] cift = new int[c];
 		int[] tek = new int[t];
 
-		int a, x = 0, y = 0;
+		int x = 0, y = 0;
 
 		for (int i = 0; i < cift.length; i++) {
 			while (s1.hasNext()) {
-				a = s1.nextInt();
+				int a = s1.nextInt();
 
 				if (a % 2 == 0) {
 					cift[x] = a;

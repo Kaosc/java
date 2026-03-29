@@ -9,18 +9,18 @@ public class FileMethod {
 	public static void main(String[] args) throws IOException {
 
 		// String türünde tek parametreli Kurucu metota göre
-		File f1 = new File("E:\\dev\\Java\\oop\\texts\\dosya.txt");
-		String yol = "E:\\dev\\Java\\oop\\texts\\dosya.txt";
+		File f1 = new File("E:/dev/Java/oop/texts/dosya.txt");
+		String yol = "E:/dev/Java/oop/texts/dosya.txt";
 		File f2 = new File(yol);
 
 		// String türünde iki parametreli Kurucu metota göre
-		String p = "E:\\dev\\Java\\oop\\texts";
+		String p = "E:/dev/Java/oop/texts";
 		String c = "dosya.txt";
 		File f3 = new File(p, c);
-		File f4 = new File("E:\\dev\\Java\\oop\\texts", "dosya.txt");
+		File f4 = new File("E:/dev/Java/oop/texts", "dosya.txt");
 
 		// File ve String türünde iki parametreli Kurucu metota göre
-		File f5 = new File("E:\\dev\\Java\\oop\\texts");
+		File f5 = new File("E:/dev/Java/oop/texts");
 		File f6 = new File(f5, c);
 
 		File f7 = new File(p);

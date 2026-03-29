@@ -13,8 +13,8 @@ public class IOStream {
 		// yaygın olduğundan, FileReader ve FileWriter gibi karakter bazında çalışan
 		// sınıflar tercih edilir.
 
-		FileInputStream f1 = new FileInputStream("E:\\dev\\Java\\oop\\texts\\vize.txt");
-		FileOutputStream f2 = new FileOutputStream("E:\\dev\\Java\\oop\\texts\\vize.txt");
+		FileInputStream f1 = new FileInputStream("E:/dev/Java/oop/texts/vize.txt");
+		FileOutputStream f2 = new FileOutputStream("E:/dev/Java/oop/texts/vize.txt");
 
 		System.out.println((char) f1.read());
 

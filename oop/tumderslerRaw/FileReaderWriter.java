@@ -6,9 +6,9 @@ public class FileReaderWriter {
 
 	public static void main(String[] args) throws IOException {
 
-		FileReader f = new FileReader("C:\\Users\\Lenovo\\Desktop\\isim.txt");
+		FileReader f = new FileReader("E:/dev/java/oop/texts/isim.txt");
 
-		File s = new File("C:\\Users\\Lenovo\\Desktop\\sayi.txt");
+		File s = new File("E:/dev/java/oop/texts/sayi.txt");
 		FileReader f1 = new FileReader(s);
 
 		FileWriter w = new FileWriter(s);

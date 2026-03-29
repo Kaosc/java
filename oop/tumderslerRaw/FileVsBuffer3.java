@@ -6,9 +6,9 @@ public class FileVsBuffer3 {
 	// BufferedWriter BufferedReader
 
 	public static void main(String[] args) throws IOException {
-		File f = new File("E:\\dev\\Java\\oop\\texts\\isim.txt");
+		File f = new File("E:/dev/Java/oop/texts/isim.txt");
 		FileWriter w = new FileWriter(f, true);
-		FileWriter y = new FileWriter("E:\\dev\\Java\\oop\\texts\\isim.txt", true);
+		FileWriter y = new FileWriter("E:/dev/Java/oop/texts/isim.txt", true);
 		FileReader r = new FileReader(f);
 
 		int fr = r.read();

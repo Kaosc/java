@@ -14,8 +14,8 @@ public class FileVsBuffer4 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		File m = new File("C:\\Users\\Lenovo\\Desktop\\vize.txt");
-		File n = new File("C:\\Users\\Lenovo\\Desktop\\ort.txt");
+		File m = new File("E:/dev/java/oop/texts/vize.txt");
+		File n = new File("E:/dev/java/oop/texts/ort.txt");
 		kontrol(m);
 		kontrol(n);
 
