@@ -1,0 +1,8 @@
+Ahmet       ,34                     
+Mehmet,       98 
+Ayşe,83   
+Fatma,    52
+Ali     ,100   
+Zeynep,      23 
+Hüseyin     ,32   
+Elif,      92   
