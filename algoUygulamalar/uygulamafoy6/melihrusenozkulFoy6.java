@@ -1,8 +1,10 @@
 package algoUygulamalar.uygulamafoy6;
 
+import java.io.File;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class melihrusenozkulFoy6 {
@@ -59,24 +61,40 @@ public class melihrusenozkulFoy6 {
    }
 
    // UYGULAMA 5 //
+   static class Log {
+      LocalDateTime tarih;
+      String level;
+      String mesaj;
 
-   // a) Log kayıtlarını parse et
-   static String[][] bolumlendir(String[] logs) {
-      String[][] result = new String[logs.length][3];
-      for (int i = 0; i < logs.length; i++) {
-         String[] parts = logs[i].split("\\|");
-         result[i][0] = parts[0]; // tarih
-         result[i][1] = parts[1]; // level
-         result[i][2] = parts[2]; // mesaj
+      Log(String satir) {
+         String[] parts = satir.split("\\|");
+         this.tarih = LocalDateTime.parse(parts[0]);
+         this.level = parts[1];
+         this.mesaj = parts[2];
       }
-      return result;
+   }
+
+   // a) Dosyadan oku
+   static ArrayList<Log> dosyaOku(String dosyaYolu) {
+      ArrayList<Log> logs = new ArrayList<>();
+
+      try (Scanner sc = new Scanner(new File(dosyaYolu))) {
+         while (sc.hasNextLine()) {
+            logs.add(new Log(sc.nextLine().trim()));
+         }
+      } catch (Exception e) {
+         System.out.println("Dosya okunamadı: " + e);
+      }
+
+      return logs;
    }
 
    // b) INFO, WARN, ERROR say
-   static void logSayisi(String[][] logs) {
+   static void logSayisi(ArrayList<Log> logs) {
       int info = 0, warn = 0, error = 0;
-      for (String[] log : logs) {
-         switch (log[1]) {
+
+      for (Log log : logs) {
+         switch (log.level) {
             case "INFO":
                info++;
                break;
@@ -88,139 +106,147 @@ public class melihrusenozkulFoy6 {
                break;
          }
       }
-      System.out.println("INFO: " + info + " WARN: " + warn + " ERROR: " + error);
+
+      System.out.println("INFO: " + info + " | WARN: " + warn + " | ERROR: " + error);
    }
 
    // c) Aynı dakikada 3+ ERROR → anomali
-   static void anomaliTespit(String[][] logs) {
-      DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+   static void anomaliTespit(ArrayList<Log> logs) {
+      DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+      boolean anomaliBulundu = false;
 
-      for (int i = 0; i < logs.length; i++) {
-         if (!logs[i][1].equals("ERROR"))
+      for (Log log1 : logs) {
+         if (!log1.level.equals("ERROR")) {
             continue;
+         }
 
-         // bu log'un dakikasını al
-         LocalDateTime dt1 = LocalDateTime.parse(logs[i][0]);
-         String dakika1 = dt1.format(fmt);
-
+         String dakika1 = log1.tarih.format(fmt);
          int count = 0;
-         for (int j = 0; j < logs.length; j++) {
-            if (!logs[j][1].equals("ERROR"))
+
+         for (Log log2 : logs) {
+            if (!log2.level.equals("ERROR")) {
                continue;
-            LocalDateTime dt2 = LocalDateTime.parse(logs[j][0]);
-            if (dt2.format(fmt).equals(dakika1))
+            }
+
+            if (log2.tarih.format(fmt).equals(dakika1))
                count++;
          }
 
          if (count > 3) {
-            System.out.println("ANOMALİ: " + dakika1 + " dakikasında " + count + " ERROR!");
+            System.out.println("ANOMALİ: " + dakika1 + " → " + count + " ERROR!");
+            anomaliBulundu = true;
          }
       }
+
+      if (!anomaliBulundu)
+         System.out.println("Anomali tespit edilmedi.");
    }
 
    // d) En fazla ERROR olan saat
-   static void enYogunSaat(String[][] logs) {
+   static void enYogunSaat(ArrayList<Log> logs) {
       int[] saatler = new int[24];
 
-      for (String[] log : logs) {
-         if (!log[1].equals("ERROR"))
+      for (Log log : logs) {
+         if (!log.level.equals("ERROR")) {
             continue;
-         LocalDateTime dt = LocalDateTime.parse(log[0]);
-         saatler[dt.getHour()]++;
+         }
+
+         saatler[log.tarih.getHour()]++;
       }
 
       int maxSaat = 0;
       for (int i = 1; i < 24; i++) {
-         if (saatler[i] > saatler[maxSaat])
+         if (saatler[i] > saatler[maxSaat]) {
             maxSaat = i;
+         }
       }
 
       System.out.println("En yoğun saat: " + maxSaat + ":00 → " + saatler[maxSaat] + " ERROR");
    }
 
-   // e) İlk-son arası süre ve 5 dakikadan kısa aralıklar
-   static void zamanAnalizi(String[][] logs) {
-      LocalDateTime ilk = LocalDateTime.parse(logs[0][0]);
-      LocalDateTime son = LocalDateTime.parse(logs[logs.length - 1][0]);
+   // e) İlk son arası süre ve 5 dakikadan kısa aralık
+   static void zamanAnalizi(ArrayList<Log> logs) {
+      LocalDateTime ilk = logs.get(0).tarih;
+      LocalDateTime son = logs.get(logs.size() - 1).tarih;
 
       long dakika = Duration.between(ilk, son).toMinutes();
       System.out.println("Toplam süre: " + dakika + " dakika");
 
-      // 5 dakikadan kısa aralıklar
-      for (int i = 1; i < logs.length; i++) {
-         LocalDateTime t1 = LocalDateTime.parse(logs[i - 1][0]);
-         LocalDateTime t2 = LocalDateTime.parse(logs[i][0]);
-         long fark = Duration.between(t1, t2).toMinutes();
+      System.out.println("5 dakikadan kısa aralıklar:");
+      boolean bulundu = false;
+
+      for (int i = 1; i < logs.size(); i++) {
+         long fark = Duration.between(logs.get(i - 1).tarih, logs.get(i).tarih).toMinutes();
+
          if (fark < 5) {
-            System.out.println("Kısa aralık: " + logs[i - 1][0] + " → " + logs[i][0] + " (" + fark + " dk)");
+            System.out.println("  " + logs.get(i - 1).tarih + " → " + logs.get(i).tarih + " (" + fark + " dk)");
+            bulundu = true;
          }
       }
+
+      if (!bulundu)
+         System.out.println("  Yok.");
    }
 
    // f) Sistem sınıflandırma
-   static void siniflandir(String[][] logs) {
-      DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-
-      int anomaliSayisi = 0;
-      int anomaliSaatSayisi = 0;
+   static void siniflandir(ArrayList<Log> logs) {
+      DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
       boolean[] anomaliSaatler = new boolean[24];
+      int anomaliSaatSayisi = 0;
+      boolean anomaliVar = false;
 
-      for (int i = 0; i < logs.length; i++) {
-         if (!logs[i][1].equals("ERROR"))
+      for (Log log1 : logs) {
+         if (!log1.level.equals("ERROR"))
             continue;
 
-         LocalDateTime dt1 = LocalDateTime.parse(logs[i][0]);
-         String dakika1 = dt1.format(fmt);
+         String dakika1 = log1.tarih.format(fmt);
          int count = 0;
 
-         for (int j = 0; j < logs.length; j++) {
-            if (!logs[j][1].equals("ERROR"))
+         for (Log log2 : logs) {
+            if (!log2.level.equals("ERROR")) {
                continue;
-            LocalDateTime dt2 = LocalDateTime.parse(logs[j][0]);
-            if (dt2.format(fmt).equals(dakika1))
+            }
+            if (log2.tarih.format(fmt).equals(dakika1)) {
                count++;
+            }
          }
 
-         if (count > 3 && !anomaliSaatler[dt1.getHour()]) {
-            anomaliSayisi++;
-            anomaliSaatler[dt1.getHour()] = true;
+         int saat = log1.tarih.getHour();
+         if (count > 3 && !anomaliSaatler[saat]) {
+            anomaliSaatler[saat] = true;
             anomaliSaatSayisi++;
+            anomaliVar = true;
          }
       }
 
-      if (anomaliSayisi == 0) {
-         System.out.println("Sistem Durumu: Normal ✅");
+      if (!anomaliVar) {
+         System.out.println("Sistem Durumu: Normal");
       } else if (anomaliSaatSayisi > 1) {
-         System.out.println("Sistem Durumu: Kritik 🔴");
+         System.out.println("Sistem Durumu: Kritik");
+      } else {
+         System.out.println("Sistem Durumu: Uyarı");
       }
    }
 
    static void uygulama5() {
-      Scanner sc = new Scanner(System.in);
-      String[] logs = new String[20];
+      String dosyaYolu = "E:/dev/java/algoUygulamalar/uygulamafoy6/log.txt";
 
-      System.out.println("20 log kaydı girin:");
-      for (int i = 0; i < 20; i++) {
-         logs[i] = sc.nextLine();
-      }
-      sc.close();
+      ArrayList<Log> logs = dosyaOku(dosyaYolu);
 
-      String[][] parsed = bolumlendir(logs);
+      System.out.println("\nb) Log Sayıları");
+      logSayisi(logs);
 
-      System.out.println("\n--- b) Log Sayıları ---");
-      logSayisi(parsed);
+      System.out.println("\nc) Anomali Tespiti");
+      anomaliTespit(logs);
 
-      System.out.println("\n--- c) Anomali Tespiti ---");
-      anomaliTespit(parsed);
+      System.out.println("\nd) En Yoğun Saat");
+      enYogunSaat(logs);
 
-      System.out.println("\n--- d) En Yoğun Saat ---");
-      enYogunSaat(parsed);
+      System.out.println("\ne) Zaman Analizi");
+      zamanAnalizi(logs);
 
-      System.out.println("\n--- e) Zaman Analizi ---");
-      zamanAnalizi(parsed);
-
-      System.out.println("\n--- f) Sistem Sınıflandırma ---");
-      siniflandir(parsed);
+      System.out.println("\nf) Sistem Sınıflandırma");
+      siniflandir(logs);
    }
 
    public static void main(String[] args) {

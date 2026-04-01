@@ -1,0 +1,20 @@
+2026-03-25T14:20:01|INFO|System started
+2026-03-25T14:21:03|INFO|User login successful
+2026-03-25T14:22:10|WARN|High memory usage detected
+2026-03-25T14:23:05|ERROR|Disk full
+2026-03-25T14:23:15|ERROR|Disk full
+2026-03-25T14:23:40|ERROR|Write failed
+2026-03-25T14:23:55|ERROR|Write failed
+2026-03-25T14:24:10|ERROR|Disk full
+2026-04-25T14:25:00|INFO|Cleanup started
+2026-04-25T14:26:30|WARN|CPU usage above 90%
+2026-04-25T15:28:10|INFO|Backup completed
+2026-05-25T14:27:00|ERROR|Connection timeout
+2026-05-25T15:30:05|WARN|Low disk space
+2026-05-25T15:31:00|ERROR|Service unavailable
+2026-05-25T15:31:02|ERROR|Service unavailable
+2026-05-25T15:31:04|ERROR|Service unavailable
+2026-05-25T15:31:06|ERROR|Service unavailable
+2026-05-25T16:45:00|INFO|System health check
+2026-05-25T16:50:10|WARN|Network latency high
+2026-05-25T16:55:30|ERROR|Database connection lost
