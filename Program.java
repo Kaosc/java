@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -114,32 +115,42 @@ import java.util.Scanner;
 //     }
 // }
 
+// public class Program {
+//     public static void main(String[] args) {
+//         File file = new File("E:/dev/java/students.txt");
+
+//         try {
+//             Scanner sc = new Scanner(file);
+
+//             int sum = 0;
+//             int studentCount = 0;
+
+//             while (sc.hasNextLine()) {
+//                 String line = sc.nextLine();
+//                 studentCount++;
+
+//                 String[] parts = line.trim().replaceAll(" ", "").split(",");
+
+//                 int score = Integer.parseInt(parts[1]);
+//                 sum += score;
+//             }
+
+//             double avg = sum / (double) studentCount;
+//             System.out.print(avg);
+
+//             sc.close();
+//         } catch (Exception e) {
+//             System.out.print(e);
+//         }
+//     }
+// }
+
 public class Program {
     public static void main(String[] args) {
-        File file = new File("E:/dev/java/students.txt");
+        String log = "2026-03-25T14:23:10|ERROR|Disk full";
+        String[] parts = log.split("\\|");
 
-        try {
-            Scanner sc = new Scanner(file);
-
-            int sum = 0;
-            int studentCount = 0;
-
-            while (sc.hasNextLine()) {
-                String line = sc.nextLine();
-                studentCount++;
-
-                String[] parts = line.trim().replaceAll(" ", "").split(",");
-
-                int score = Integer.parseInt(parts[1]);
-                sum += score;
-            }
-
-            double avg = sum / (double) studentCount;
-            System.out.print(avg);
-
-            sc.close();
-        } catch (Exception e) {
-            System.out.print(e);
-        }
+        LocalDateTime timestamp = LocalDateTime.parse(parts[0]);
+        System.out.println("Timestamp: " + timestamp);
     }
 }
