@@ -1,4 +1,4 @@
-package vize.soru1;
+package oop.vize.soru1;
 
 import java.io.File;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package oopUygulamalar.uygulamaFoy4;
+package oop.foyler.uygulamaFoy4;
 
 import java.io.File;
 import java.util.Scanner;
@@ -23,7 +23,7 @@ public class melihrusenozkulFoy4 {
             String[] parts = line.split("\\s+");
 
             for (int i = 0; i < parts.length; i += 2) {
-               String product = parts[i];
+               String product = parts[i];w
                int quantity = Integer.parseInt(parts[i + 1]);
 
                if (quantity > maxSales) {

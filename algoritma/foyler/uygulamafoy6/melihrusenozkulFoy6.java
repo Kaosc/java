@@ -1,4 +1,4 @@
-package algoUygulamalar.uygulamafoy6;
+package algoritma.foyler.uygulamafoy6;
 
 import java.io.File;
 import java.time.Duration;

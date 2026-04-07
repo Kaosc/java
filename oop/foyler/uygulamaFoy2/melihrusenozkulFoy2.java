@@ -1,4 +1,4 @@
-package oopUygulamalar.uygulamaFoy2;
+package oop.foyler.uygulamaFoy2;
 
 public class melihrusenozkulFoy2 {
 

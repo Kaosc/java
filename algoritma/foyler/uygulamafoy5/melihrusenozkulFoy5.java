@@ -1,4 +1,4 @@
-package algoUygulamalar.uygulamafoy5;
+package algoritma.foyler.uygulamafoy5;
 
 import java.util.Scanner;
 

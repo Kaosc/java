@@ -1,4 +1,4 @@
-package oopUygulamalar.uygulamaFoy5;
+package oop.foyler.uygulamaFoy5;
 
 // @SuppressWarnings("unused")
 
