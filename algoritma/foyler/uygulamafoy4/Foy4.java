@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("unused")
 
-public class melihrusenozkulFoy4 {
+public class Foy4 {
    public static Scanner scanner = new Scanner(System.in);
 
    static void uygulama1() {
@@ -146,7 +146,7 @@ public class melihrusenozkulFoy4 {
          }
 
          double doluYatakOrani = (doluYatakSayisi / (double) yataklar[i].length) * 100;
-         System.out.printf(i + 1 + ". Servis" + " doluluk oranı:" + doluYatakOrani + "%%\n");
+         System.out.printf(i + 1 + ". Servis" + " doluluk oranı:" + doluYatakOrani + "%%\\n");
 
          int bosYatakSayisi = yataklar[i].length - doluYatakSayisi;
          if (bosYatakSayisi > maxBosServisYatakSayisi) {
@@ -385,52 +385,6 @@ public class melihrusenozkulFoy4 {
 
    }
 
-   static void uygulama13() {
-      int[][] A = new int[2][3];
-      int[][] B = new int[3][1];
-      int[][] C = new int[2][1];
-
-
-      /**
-       * A Matrisi:       B Matrisi:   C Matrisi:
-       * [ 1, 2, 3 ]     [ 2 ]         [ 20 ]
-       * [ 4, 5, 6 ]  x  [ 3 ]    =    [ 47 ]
-       *                 [ 4 ]
-       * 
-       * A'nun sütun sayısı (3) ile B'nin satır sayısı (3) eşit olduğu için çarpma işlemi yapılabilir.
-       */
-
-      System.out.println("A Matrisi için 6 adet değer giriniz:");
-      for (int i = 0; i < A.length; i++) {
-         for (int j = 0; j < A[i].length; j++) {
-            A[i][j] = scanner.nextInt();
-         }
-      }
-
-      System.out.println("B Matrisi için 3 adet değer giriniz:");
-      for (int i = 0; i < B.length; i++) {
-         for (int j = 0; j < B[i].length; j++) {
-            B[i][j] = scanner.nextInt();
-         }
-      }
-
-      for (int i = 0; i < C.length; i++) {
-         for (int j = 0; j < C[i].length; j++) {
-            for (int k = 0; k < A[i].length; k++) {
-               C[i][j] += A[i][k] * B[k][j];
-            }
-         }
-      }
-
-      System.out.println("C Matrisi:");
-      for (int i = 0; i < C.length; i++) {
-         for (int j = 0; j < C[i].length; j++) {
-            System.out.print(C[i][j] + " ");
-         }
-         System.out.println();
-      }
-   }
-
    public static void main(String[] args) {
       // uygulama1();
       // uygulama2();
@@ -440,17 +394,10 @@ public class melihrusenozkulFoy4 {
       // uygulama6();
       // uygulama7();
       // uygulama8();
-
-      char[][] dizi = {
-            { 'A', 'S', 'D', '1' },
-            { '@', '#', '$', '%' }
-      };
-
-      // uygulama9(dizi);
-
+      // uygulama9(new char[][] { { 'A', 'B', 'C', '!', '@' }, { '1', '2', '3', '#',
+      // '$' } });
       // uygulama10();
       // uygulama11();
       // uygulama12();
-      uygulama13();
    }
 }

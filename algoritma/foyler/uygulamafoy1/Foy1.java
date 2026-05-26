@@ -2,7 +2,7 @@ package algoritma.foyler.uygulamafoy1;
 
 @SuppressWarnings("unused")
 
-public class melihrusenozkulFoy1 {
+public class Foy1 {
 
    static void uygulama1() {
       // Uygulama - 1

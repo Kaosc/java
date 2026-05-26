@@ -1,6 +1,6 @@
 package oop.foyler.uygulamaFoy1;
 
-public class melihrusenozkulFoy1 {
+public class Foy1 {
 
    static int usAl(int num, int power) {
       if (power == 0) {
@@ -39,9 +39,6 @@ public class melihrusenozkulFoy1 {
          return sum;
       }
 
-      // Sayı 10'a bölündüğüde son basamak virgül sonrası kalır, ve int atandığı için
-      // ondalık kısım atılır.
-      // Sayının 10'a bölümünden kalan ise son basamak olur.
       return basamakTopla(num / 10, sum + num % 10);
    }
 
@@ -50,10 +47,6 @@ public class melihrusenozkulFoy1 {
          return (int) rev;
       }
 
-      // Sayının 10'a bölündüğüde son basamak virgül sonrası kalır, ve int atandığı
-      // için ondalık kısım atılır.
-      // sayının 10'a bölümünden kalan ise son basamak olur. rev * 10 ile rev'i bir
-      // basamak sola kaydırır, num % 10 ile son basamağı ekler.
       return tersCevir(num / 10, (rev * 10 + num % 10));
    }
 

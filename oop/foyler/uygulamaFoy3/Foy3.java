@@ -3,7 +3,7 @@ package oop.foyler.uygulamaFoy3;
 import java.io.File;
 import java.util.Scanner;
 
-public class melihrusenozkulFoy3 {
+public class Foy3 {
 
    static void uygulama1() {
       File file = new File("E:\\dev\\java\\oopUygulamalar\\uygulamaFoy3\\texts\\filmler.txt");
@@ -155,7 +155,7 @@ public class melihrusenozkulFoy3 {
          while (fileScanner.hasNextLine()) {
             String satir = fileScanner.nextLine();
             // split(\\s+) tüm boşluk karakterlerinin kaldırır. "\\s+" Tüm bolukluk karakterlerini belirtir.
-            String[] parcalar = satir.replace(".", "").split("\\s+");
+            String[] parcalar = satir.replace(".", "").split("\\\\s+");
 
             if (parcalar[0].equalsIgnoreCase(arananIsim)) {
                System.out.println("Telefon numarası: " + parcalar[1]);

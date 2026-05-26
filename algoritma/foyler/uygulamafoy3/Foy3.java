@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("unused")
 
-public class melihrusenozkulFoy3 {
+public class Foy3 {
    public static Scanner scanner = new Scanner(System.in);
 
    static void uygulama1() {

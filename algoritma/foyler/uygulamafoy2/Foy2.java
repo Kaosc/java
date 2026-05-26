@@ -3,7 +3,7 @@ package algoritma.foyler.uygulamafoy2;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class melihrusenozkulFoy2 {
+public class Foy2 {
    static Scanner scanner = new Scanner(System.in);
 
    static void print(String arg) {
@@ -175,12 +175,10 @@ public class melihrusenozkulFoy2 {
       int[] parkingSpots = new int[50];
       int emptyCount = 0;
 
-      // Diziyi rastgele 0 ve 1 ile doldur
       for (int i = 0; i < parkingSpots.length; i++) {
          parkingSpots[i] = Math.random() < 0.5 ? 0 : 1;
       }
 
-      // Toplam boş park yeri sayısını hesaplayınız.
       for (int i : parkingSpots) {
          if (i == 0) {
             ++emptyCount;
@@ -188,7 +186,6 @@ public class melihrusenozkulFoy2 {
       }
       print("Toplam boş park sayısı: " + emptyCount);
 
-      // İlk boş park yerinin indeksini bulunuz.
       for (int i = 0; i < parkingSpots.length; i++) {
          if (parkingSpots[i] == 0) {
             print("\nİlk boş park yeri indeksi: " + i);
@@ -196,7 +193,6 @@ public class melihrusenozkulFoy2 {
          }
       }
 
-      // Yan yana en fazla kaç boş park yeri olduğunu tespit ediniz.
       int maxEmptySpot = 0;
       int currentEmptySpotCount = 0;
 
@@ -211,7 +207,6 @@ public class melihrusenozkulFoy2 {
 
       print("\nYan yana en fazla boş park yeri sayısı: " + maxEmptySpot);
 
-      // En az 3 araçlık yan yana boş alan var mı kontrol ediniz.
       String msg = "\nEn az 3 araçlık yan yana boş yer ";
       if (maxEmptySpot >= 3) {
          print(msg + "var");
@@ -219,7 +214,6 @@ public class melihrusenozkulFoy2 {
          print(msg + "yok");
       }
 
-      // Otoparkın doluluk oranını yüzde (%) olarak hesaplayınız.
       double ratio = (double) (parkingSpots.length - emptyCount) / parkingSpots.length;
       int rate = (int) (ratio * 100);
       print("\nOtopark doluluk oranı: %" + rate);

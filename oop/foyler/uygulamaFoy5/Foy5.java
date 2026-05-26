@@ -2,7 +2,7 @@ package oop.foyler.uygulamaFoy5;
 
 // @SuppressWarnings("unused")
 
-public class melihrusenozkulFoy5 {
+public class Foy5 {
 
    static void uygulama1() {
    }

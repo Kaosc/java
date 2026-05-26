@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class melihrusenozkulFoy6 {
+public class Foy6 {
    public static Scanner scanner = new Scanner(System.in);
 
    public static int acilKategoriSayisi(int[] rafOmru) {
@@ -28,7 +28,7 @@ public class melihrusenozkulFoy6 {
       System.out.println("Yeni fiyatlar:");
       for (int i = 0; i < fiyatlar.length; i++) {
          fiyatlar[i] = fiyatlar[i] * (1 - indirimYuzdesi / 100.0);
-         System.out.printf("%d. ürünün yeni fiyatı: %.2f\n", (i + 1), fiyatlar[i]);
+         System.out.printf("%d. ürünün yeni fiyatı: %.2f\\n", (i + 1), fiyatlar[i]);
       }
    }
 
@@ -60,7 +60,6 @@ public class melihrusenozkulFoy6 {
 
    }
 
-   // UYGULAMA 5 //
    static class Log {
       LocalDateTime tarih;
       String level;
@@ -74,7 +73,6 @@ public class melihrusenozkulFoy6 {
       }
    }
 
-   // a) Dosyadan oku
    static ArrayList<Log> dosyaOku(String dosyaYolu) {
       ArrayList<Log> logs = new ArrayList<>();
 
@@ -89,7 +87,6 @@ public class melihrusenozkulFoy6 {
       return logs;
    }
 
-   // b) INFO, WARN, ERROR say
    static void logSayisi(ArrayList<Log> logs) {
       int info = 0, warn = 0, error = 0;
 
@@ -110,7 +107,6 @@ public class melihrusenozkulFoy6 {
       System.out.println("INFO: " + info + " | WARN: " + warn + " | ERROR: " + error);
    }
 
-   // c) Aynı dakikada 3+ ERROR → anomali
    static void anomaliTespit(ArrayList<Log> logs) {
       DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
       boolean anomaliBulundu = false;
@@ -142,7 +138,6 @@ public class melihrusenozkulFoy6 {
          System.out.println("Anomali tespit edilmedi.");
    }
 
-   // d) En fazla ERROR olan saat
    static void enYogunSaat(ArrayList<Log> logs) {
       int[] saatler = new int[24];
 
@@ -164,7 +159,6 @@ public class melihrusenozkulFoy6 {
       System.out.println("En yoğun saat: " + maxSaat + ":00 → " + saatler[maxSaat] + " ERROR");
    }
 
-   // e) İlk son arası süre ve 5 dakikadan kısa aralık
    static void zamanAnalizi(ArrayList<Log> logs) {
       LocalDateTime ilk = logs.get(0).tarih;
       LocalDateTime son = logs.get(logs.size() - 1).tarih;
@@ -188,7 +182,6 @@ public class melihrusenozkulFoy6 {
          System.out.println("  Yok.");
    }
 
-   // f) Sistem sınıflandırma
    static void siniflandir(ArrayList<Log> logs) {
       DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
       boolean[] anomaliSaatler = new boolean[24];

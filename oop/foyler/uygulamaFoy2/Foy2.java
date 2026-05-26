@@ -1,6 +1,6 @@
 package oop.foyler.uygulamaFoy2;
 
-public class melihrusenozkulFoy2 {
+public class Foy2 {
 
    static void palindromKontrol(String str, String rev, int i) {
       if (str.length() == rev.length()) {
@@ -32,8 +32,6 @@ public class melihrusenozkulFoy2 {
       karakterSay(str, c, i, adet);
    }
 
-   // Asal sayılar kendilerinden ve 1'den başka böleni olmayan 1'den büyük
-   // sayılardır.
    static void asalKontrol(int num, int i) {
       if (i == num) {
          System.out.println(num + " bir asal sayıdır.");
@@ -61,8 +59,6 @@ public class melihrusenozkulFoy2 {
       buyukHarfSayac(str, ++i, adet);
    }
 
-   // Backtracking ile sudoku oyununu rekürsif olarak tasarlayınız
-   // TODO: ?
    static void sudoku() {
       
    }

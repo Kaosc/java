@@ -3,7 +3,7 @@ package oop.foyler.uygulamaFoy4;
 import java.io.File;
 import java.util.Scanner;
 
-public class melihrusenozkulFoy4 {
+public class Foy4 {
 
    static void uygulama1() throws Exception {
       File file = new File("E:\\dev\\java\\oopUygulamalar\\uygulamaFoy4\\texts\\satis.txt");
@@ -20,10 +20,10 @@ public class melihrusenozkulFoy4 {
 
          while (sc.hasNextLine()) {
             String line = sc.nextLine();
-            String[] parts = line.split("\\s+");
+            String[] parts = line.split("\\\\s+");
 
             for (int i = 0; i < parts.length; i += 2) {
-               String product = parts[i];w
+               String product = parts[i];
                int quantity = Integer.parseInt(parts[i + 1]);
 
                if (quantity > maxSales) {

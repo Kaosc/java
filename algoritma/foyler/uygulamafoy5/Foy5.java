@@ -2,7 +2,7 @@ package algoritma.foyler.uygulamafoy5;
 
 import java.util.Scanner;
 
-public class melihrusenozkulFoy5 {
+public class Foy5 {
    public static Scanner scanner = new Scanner(System.in);
 
    // UYGULAMA-1 //
@@ -138,8 +138,6 @@ public class melihrusenozkulFoy5 {
       }
    }
 
-   // UYGULAMA-2 //
-
    static String[] merge(String[] list1, String[] list2) {
       String[] mergedList = new String[list1.length + list2.length];
       int index = 0;
@@ -185,8 +183,6 @@ public class melihrusenozkulFoy5 {
       System.out.println("");
    }
 
-   // UYGULAMA-3 //
-
    static void durationCalc(double[] arr) {
       double sum = 0, avg = 0, max = 0;
 
@@ -221,40 +217,6 @@ public class melihrusenozkulFoy5 {
       sc.close();
    }
 
-   // UYGULAMA-4 //
-
-   static void letterCount(String text, String letter) {
-      int count = 0;
-      String[] letters = text.trim().replace("\\s+", "").split("");
-
-      for (String l : letters) {
-         if (l.equalsIgnoreCase(letter)) {
-            count++;
-         }
-      }
-
-      if (count > 0) {
-         System.out.println("Bu cümlede " + letter + " harfi " + count + " adet var.");
-      } else {
-         System.out.println("Bu cümlede " + letter + " harfi hiç yok.");
-      }
-
-   }
-
-   static void uygulama4() {
-      Scanner sc = new Scanner(System.in);
-
-      System.out.print("Cümleyi giriniz: ");
-      String text = sc.nextLine();
-      System.out.print("Harfi giriniz: ");
-      String letter = sc.next();
-
-      letterCount(text, letter);
-      sc.close();
-   }
-
-   // UYGULAMA-5 //
-
    void daire(double r) {
       System.out.println("Dairenin alanı: " + (Math.PI * r * r));
    }
@@ -286,7 +248,7 @@ public class melihrusenozkulFoy5 {
 
    static void uygulama5() {
       Scanner sc = new Scanner(System.in);
-      melihrusenozkulFoy5 m = new melihrusenozkulFoy5();
+      Foy5 m = new Foy5();
 
       System.out.print("""
             Lütfen alanını hesaplamak istediğiniz şekli seçiniz:
