@@ -1,4 +1,4 @@
-package algoritma.foyler.uygulamafoy1;
+package algoritma.foyler.foy1;
 
 @SuppressWarnings("unused")
 

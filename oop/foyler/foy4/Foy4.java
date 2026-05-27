@@ -1,4 +1,4 @@
-package oop.foyler.uygulamaFoy4;
+package oop.foyler.foy4;
 
 import java.io.File;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package oop.foyler.uygulamaFoy1;
+package oop.foyler.foy1;
 
 public class Foy1 {
 

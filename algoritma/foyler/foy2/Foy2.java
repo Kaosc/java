@@ -1,4 +1,4 @@
-package algoritma.foyler.uygulamafoy2;
+package algoritma.foyler.foy2;
 
 import java.util.HashMap;
 import java.util.Scanner;
