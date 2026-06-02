@@ -1,4 +1,4 @@
-package oppFinal;
+package oop.oppFinal;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
