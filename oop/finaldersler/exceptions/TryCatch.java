@@ -1,9 +1,9 @@
-package oop.finaldersler;
+package oop.finaldersler.exceptions;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-class TryCatch1 {
+class TryCatch {
    public static void main(String[] args) {
       int[] oduller = { 500, 1000, 2000 };
       Scanner sc = new Scanner(System.in);

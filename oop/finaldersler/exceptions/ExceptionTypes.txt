@@ -1,0 +1,17 @@
+# Unchecked Exceptions
+   - RuntimeException sınıfından türeyen hatalardır 
+      - NullPointerException (En meşhuru): Oluşturulmamış, yani null olan bir nesnenin metodunu veya özelliğini çağırmaya çalıştığında fırlar. (Örn: String s = null; s.length();)
+      - ArithmeticException: Matematiksel olarak imkansız bir işlem yapıldığında fırlar. (Örn: Tam sayıyı sıfıra bölmek).
+      - ArrayIndexOutOfBoundsException: Bir dizinin (array) sınırları dışında bir indekse erişmeye çalıştığında fırlar. (Örn: 3 elemanlı dizinin 5. elemanını istemek).
+      - InputMismatchException: Scanner ile sayı beklerken kullanıcının harf veya sembol girmesiyle fırlar. (java.util paketiyle import etmeyi unutma!)
+      - NumberFormatException: Sayı formatına uymayan bir metni sayıya dönüştürmeye çalışırken fırlar. (Örn: Integer.parseInt("yüz");)
+      - IllegalArgumentException: Bir metoda geçersiz veya uygunsuz bir parametre gönderildiğinde fırlar.
+      Bunları metotlarda throws ile belirtmek veya try-catch içine almak zorunlu değildir, isteğe bağlıdır.
+
+# Checked Exceptions 
+   - IOException: Her türlü giriş-çıkış, dosya yazma, dosya kapatma hatalarının genel atasıdır.
+   - FileNotFoundException: Bilgisayarda var olmayan veya belirtilen adreste bulunamayan bir dosyayı açmaya/okumaya çalışırken fırlar. (IOException'ın alt sınıfıdır).
+   - ClassNotFoundException: Java projesine eklenmeyen bir kütüphaneyi veya sınıfı kod içinde çağırmaya çalıştığında fırlar.
+   - SQLException: Veritabanı işlemlerinde, hatalı bir sorgu atıldığında veya veritabanı bağlantısı koptuğunda fırlar.
+   - InterruptedException: Bir Thread uyurken (Thread.sleep()) ya da beklerken acilen kesintiye uğratılırsa fırlar. (Bir sonraki konumuzda görebiliriz).
+      Doğrudan Exception sınıfından türeyen hatalardır (Senin yazdığın SistemException ve Java'nın IOException sınıfı gibi). Bunları metot imzasında throws ile beyan etmek veya çağrıldığı yerde try-catch ile sarmalamak mecburidir, yoksa kod derlenmez (Compile-time error). Sınavda kağıda yazarken throws kelimesini unutursan hoca checked exception'larda puan kırar. Sen kodunda bunu da doğru yaptın.

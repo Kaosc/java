@@ -11,89 +11,122 @@ public class Date {
 
 	public static void main(String[] args) {
 
-		LocalDate zm = LocalDate.now(); // LocalDate nesnesi oluşturduk.
-		System.out.println(zm); // Geçerli tarihi görüntüledik.
-		LocalDate z; // yaşınızı hesaplama örneği yapın
+		LocalDate date = LocalDate.now(); // Date only - 2024-06-11
+		LocalTime time = LocalTime.now(); // Time only - 14:30:45.123
+		LocalDateTime dateTime = LocalDateTime.now(); // Date and Time - 2024-06-11T14:30:45.123
 
-		LocalTime s = LocalTime.now();// LocalTime nesnesi oluşturduk.
-		System.out.println(s);// Geçerli saati görüntüledik.
+		LocalDate todayDate = LocalDate.now();
+		LocalDateTime todayDateDateTime = LocalDateTime.now();
 
-		LocalDateTime zms = LocalDateTime.now(); // LocalDateTime nesnesi oluşturduk.
-		System.out.println(zms); // Geçerli tarih ve saati görüntüledik.
+		LocalDate spesificDate = LocalDate.of(1983, 06, 11);
+		LocalDateTime spesificDateTime = LocalDateTime.of(1983, 06, 11, 14, 30, 45);
 
-		// Format Biçimlendirme
+		// Parsing dates and times from strings
+		LocalDate dateFromString = LocalDate.parse("2007-11-03");
+		LocalDateTime dateTimeFromString = LocalDateTime.parse("2007-11-03T14:30:45");
 
-		LocalDateTime d = LocalDateTime.now();
-		System.out.println("Önce: " + d);
-		DateTimeFormatter ds = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		// Parsing a date from a string with a custom format
+		String s2 = "15/06/2026";
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate d = LocalDate.parse(s2, f); // 2026-06-15
+		
+		// Formatting dates and times
+		DateTimeFormatter fm = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm");
+		LocalDateTime dt = LocalDateTime.of(2000, 06, 07, 22, 30, 00);
+		String formattedDate = dt.format(fm); // "07-06-2000 22-30"
 
-		String bicimli = d.format(ds);
-		System.out.println("Sonra: " + bicimli);
 
-		LocalDate bugun = LocalDate.now(); // bugünün tarihi
-		LocalDate dtarih = LocalDate.of(1983, 06, 11); // yıl, ay, gün
-		LocalDate parse = LocalDate.parse("2007-11-03"); // string'den
-		System.out.println(dtarih);
-		System.out.println(parse);
+		// Extracting int values from date and time
+		LocalDate date2 = LocalDate.of(2026, 3, 27);
+		int yil = date2.getYear(); // 2026
+		int ay = date2.getMonthValue(); // 3
+		int gun = date2.getDayOfMonth(); // 27
+		int dayOfWeek = date2.getDayOfWeek().getValue(); // 5 (Friday)
+		int dayOfYear = date2.getDayOfYear(); // 86 (March 27 is the 86th day of the year)
 
-		LocalDate tarih2 = LocalDate.of(2026, 3, 27);
-		int yil = tarih2.getYear(); // 2026
-		int ay = tarih2.getMonthValue();// 3
-		int gun = tarih2.getDayOfMonth(); // 27
+		// Extracting int values from a date string
+		String s1 = "2026-06-15";
+		int year = Integer.parseInt(s1.substring(0, 4)); // 2026
+		int month = Integer.parseInt(s1.substring(5, 7)); // 6
+		int day = Integer.parseInt(s1.substring(8, 10)); // 15
 
-		System.out.println(yil + " " + ay + " " + gun + " " + tarih2.getDayOfWeek() + " " + tarih2.getDayOfYear());
 
-		LocalDate yarin = bugun.plusDays(1);
-		LocalDate gecenHafta = bugun.minusWeeks(1);
-		LocalDate gelecekAy = bugun.plusMonths(1);
-		LocalDate gecenYil = bugun.minusYears(1);
-		System.out.println(yarin);
-		System.out.println(gecenYil);
-		System.out.println(bugun.minusDays(19));
+		// Date calculations
+		LocalDate tomorrowDate = todayDate.plusDays(1); // Tomorrow's date
+		LocalDate lastWeekDate = todayDate.minusWeeks(1); // Date one week ago
+		LocalDate nextMonthDate = todayDate.plusMonths(1); // Date one month from now
+		LocalDate lastYearDate = todayDate.minusYears(1); // Date one year ago
 
-		LocalDate t1 = LocalDate.of(2020, 1, 1);
-		LocalDate t2 = LocalDate.of(2025, 3, 27);
-		Period fark = Period.between(t1, t2);
-		Period fark1 = Period.between(dtarih, bugun);
+		// Date difference
+		LocalDate d1 = LocalDate.of(2020, 1, 1);
+		LocalDate d2 = LocalDate.of(2025, 3, 27);
+		Period diff = Period.between(d1, d2);
+		int diffYears = diff.getYears(); // 5
+		int diffMonths = diff.getMonths(); // 2
+		int diffDays = diff.getDays(); // 26
 
-		System.out.println(fark1.getYears() + " Yıl " + fark1.getMonths() + " Ay " + fark1.getDays() + " Gün ");
-		System.out.println(fark.getYears()); // 5
-		System.out.println(fark.getMonths()); // 2
-		System.out.println(fark.getDays()); // 26
+		// Using ChronoUnit for date difference
+		// The difference between ChronoUnit and Period is that ChronoUnit calculates
+		// the total number of units (like years, months, days) between two dates, while
+		// Period calculates the difference in terms of years, months, and days
+		// separately. For example, if you calculate the difference between January 1,
+		// 2020, and March 27, 2025: the Period will give you 5 years, 2 months, and 26
+		// days, while ChronoUnit will give you the total number of years (5), total
+		// number of months (62), and total number of days (1912) between the two dates.
+		long diffYearsChrono = ChronoUnit.YEARS.between(d1, d2); // 5
+		long diffMonthsChrono = ChronoUnit.MONTHS.between(d1, d2); // 62
+		long diffDaysChrono = ChronoUnit.DAYS.between(d1, d2); // 1912
 
-		LocalDate t3 = LocalDate.of(2025, 3, 1);
-		LocalDate t4 = LocalDate.of(2028, 5, 10);
-		long gunFarki = ChronoUnit.YEARS.between(t3, t4);
-		System.out.println(gunFarki); // 9
+		// ChronoUnit can also be used for time differences. For example, if you have
+		// two LocalTime instances, you can calculate the difference in seconds between
+		// them:
+		LocalTime t1 = LocalTime.of(23, 23, 23);
+		LocalTime t2 = LocalTime.of(05, 12, 19);
+		long diffSecondsChrono = ChronoUnit.SECONDS.between(t1, t2); // 64824 seconds
+		long diffMinutesChrono = ChronoUnit.MINUTES.between(t1, t2); // 1080 minutes
+		long diffHoursChrono = ChronoUnit.HOURS.between(t1, t2); // 18 hours
 
-		LocalTime z2 = LocalTime.of(23, 23, 23);
-		LocalTime z3 = LocalTime.of(05, 12, 19);
-		System.out.println(ChronoUnit.SECONDS.between(z3, z2));
+		// Comparing dates
+		LocalDate d3 = LocalDate.of(2025, 3, 10);
+		LocalDate d4 = LocalDate.of(2025, 3, 15);
 
-		LocalDate t5 = LocalDate.of(2025, 3, 10);
-		LocalDate t6 = LocalDate.of(2025, 3, 15);
+		System.out.println(d3.isBefore(d4)); // true
+		System.out.println(d3.isAfter(d4)); // false
+		System.out.println(d3.isEqual(d3)); // true
 
-		System.out.println(t5.isBefore(t1)); // true
-		System.out.println(t5.isAfter(t1)); // false
-		System.out.println(t5.isEqual(t5)); // false
+		// Return a copy of this date with the specified field altered.
+		// For example, below code will return a new LocalDate with the
+		// year changed to 2025-01-07 which is the 7th day of the year 2025.
 
-		t5 = t5.withDayOfYear(34);
-		System.out.println(t5);
+		// Change the day of the YEAR to 7, but keep the year the same
+		d3 = d3.withDayOfYear(7); // 2025-01-07
+		// Change the day of the YEAR to 365, but keep the year the same
+		d3 = d3.withDayOfYear(365); // 2025-12-31
+		// Change the day of the month to 1, but keep the year and month the same
+		d3 = d3.withDayOfMonth(1); // 2025-03-01
+		// Change the month to February, but keep the year and day the same
+		d3 = d3.withMonth(2); // 2025-02-07
+		// Change the year to 2026, but keep the month and day the same
+		d3 = d3.withYear(2026); // 2026-02-07
 
-		LocalDate tarih3 = LocalDate.of(2025, 3, 27);
+		// TemporalAdjusters is a utility class that provides common date adjustments.
+		// It can be used to find the next or previous occurrence of a specific day of
+		// the week, the first or last day of the month, and more. For example, you can
+		// use TemporalAdjusters to find the next Monday after a given date, or to find
+		// the last day of the month for a given date.
+		LocalDate d5 = LocalDate.of(2026, 6, 8);
+		LocalDate nextMonday = d5.with(TemporalAdjusters.next(DayOfWeek.MONDAY)); // 2026-06-15
+		LocalDate lastDayOfMonth = d5.with(TemporalAdjusters.lastDayOfMonth()); // 2026-06-30
 
-		LocalDate yeni = tarih3.withYear(2030);
-		LocalDate ayDegis = tarih3.withMonth(12);
-		LocalDate gunDegis = tarih3.withDayOfMonth(1);
-
-		LocalDate sonrakiPazartesi = bugun.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
-
-		LocalDate aySonu = bugun.with(TemporalAdjusters.lastDayOfMonth());
-
-		System.out.println(sonrakiPazartesi);
-
-		LocalDate tarih4 = LocalDate.of(2032, 12, 10);
-		System.out.println(tarih4.isLeapYear()); // true*/
+		// Leap year is a year that is divisible by 4, but not divisible by 100, unless
+		// it is also divisible by 400. This means that the year 2000 was a leap year,
+		// but the year 1900 was not. leap years have an extra day (February 29) to
+		// keep the calendaryear synchronized with the astronomical year. so leap years
+		// have 366 days instead of the usual 365 days. This is important for date
+		// calculations, as it affects the number of days in a year and can impact
+		// the results of date arithmetic.
+		LocalDate d6 = LocalDate.of(2032, 12, 10);
+		System.out.println(d6.isLeapYear()); // true*/
 
 		/*
 		 * yyyy-MM-dd "1988-09-29"
@@ -102,14 +135,10 @@ public class Date {
 		 * E, MMM dd yyyy "Thu, Sep 29 1988"
 		 */
 
-		LocalDate bugun1 = LocalDate.now();
-
-		LocalDate teslimTarihi = bugun1.plusDays(15);
-
+		LocalDate deliveryDate = todayDate.plusDays(15);
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
-		System.out.println("Kitap Alış Tarihi: " + bugun1.format(format));
-		System.out.println("Teslim Tarihi: " + teslimTarihi.format(format));
+		System.out.println("Book order date: " + todayDate.format(format));
+		System.out.println("Delivery date: " + deliveryDate.format(format));
 	}
 
 }

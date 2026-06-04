@@ -16,13 +16,12 @@
 // F-2024-002,2024-01-16,K2,875.50
 // F-2024-004,2024-01-18,K3,620.75
 
-
 import java.io.*;
 
 public class FaturaDuzenle {
    public static void main(String[] args) throws Exception {
-      BufferedReader br = new BufferedReader(new FileReader("faturalar.txt"));
-      BufferedWriter bw = new BufferedWriter(new FileWriter("veriseti.txt"));
+      BufferedReader br = new BufferedReader(new FileReader("./faturalar.txt"));
+      BufferedWriter bw = new BufferedWriter(new FileWriter("./veriseti.txt"));
 
       String satir;
       int sayac = 1; // Counter for anonymized user IDs (K1, K2, ...)

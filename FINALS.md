@@ -23,6 +23,7 @@
       - File write and read might be included in the final
 
 # ALGORITHM
-   - Time Date functions
+   - Time Date functions 
    - Swing
  
+
