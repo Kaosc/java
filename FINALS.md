@@ -1,0 +1,28 @@
+# OOP
+   ## TOPIC 1
+   - try catch block
+   - exceptions (throw, throws)
+   - class based expections (IOException, NullPointerException, ArrayIndexOutOfBoundsException etc.)
+   - custom exceptions (create your own exception class)
+
+   ## TOPIC 2
+      - threads (creating threads by extending Thread class and implementing Runnable interface)
+      - thread lifecycle (new, runnable, running, blocked, terminated)
+      - thread synchronization (synchronized keyword, locks, deadlocks)
+      - thread communication (wait, notify, notifyAll)
+      - thread priorities
+      - thread methods (start, run, sleep, join, interrupt)
+
+   ## TOPIC 3
+      - basic regexs patters from java.util.regex package
+      - regex methods (matches, find, replaceAll, split)
+      - regex groups and backreferences (., \d, \w, \s, [abc], [^abc], {n}, {n,}, {n,m}, etc.)
+
+   ## NOTES
+      - swing will be included to final exam that will be used with threads and exceptions
+      - File write and read might be included in the final
+
+# ALGORITHM
+   - Time Date functions
+   - Swing
+ 
