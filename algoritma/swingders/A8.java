@@ -57,8 +57,8 @@ public class A8 extends JFrame {
 		contentPane.add(t2);
 		t2.setColumns(10);
 
-		JComboBox c1 = new JComboBox();
-		c1.setModel(new DefaultComboBoxModel(new String[] { "Toplama", "Çıkarma" }));
+		JComboBox<String> c1 = new JComboBox<>();
+		c1.setModel(new DefaultComboBoxModel<>(new String[] { "Toplama", "Çıkarma" }));
 		c1.setBounds(60, 73, 86, 22);
 		contentPane.add(c1);
 		JLabel l1 = new JLabel("");
@@ -68,7 +68,6 @@ public class A8 extends JFrame {
 		JButton btnNewButton = new JButton("İşlem Yap");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane p = new JOptionPane();
 				// JOptionPane.showMessageDialog(null,"Hoşgeldiniz");
 				// p.showMessageDialog(null, "Yeniden merhaba", "Karşılama", -1);
 				int a = Integer.parseInt(t1.getText());
@@ -77,13 +76,13 @@ public class A8 extends JFrame {
 					int sonuc = 0;
 					sonuc = a + b;
 					l1.setText(String.valueOf(sonuc));
-					p.showMessageDialog(null, String.valueOf(sonuc));
+					JOptionPane.showMessageDialog(null, String.valueOf(sonuc));
 				}
 
 				else if (c1.getSelectedIndex() == 1) {
 					int sonuc = a - b;
 					l1.setText(String.valueOf(sonuc));
-					p.showMessageDialog(null, String.valueOf(sonuc));
+					JOptionPane.showMessageDialog(null, String.valueOf(sonuc));
 
 				}
 

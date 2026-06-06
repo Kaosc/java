@@ -40,42 +40,38 @@ public class A7 extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel L1 = new JLabel("SAYI");
 		L1.setBounds(30, 41, 46, 14);
 		contentPane.add(L1);
-		
+
 		JLabel L2 = new JLabel("0");
 		L2.setBounds(86, 35, 76, 26);
 		contentPane.add(L2);
-		
+
 		JButton b2 = new JButton("Azalt");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				int sonuc=0,y;
-				String s=L2.getText();
-				y=Integer.parseInt(s);
-				sonuc=y-1;
+
+				int sonuc = 0, y;
+				String s = L2.getText();
+				y = Integer.parseInt(s);
+				sonuc = y - 1;
 				L2.setText(String.valueOf(sonuc));
 			}
 		});
 		b2.setBounds(156, 80, 80, 80);
 		contentPane.add(b2);
-		
+
 		JButton b1 = new JButton("Arttır");
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int sonuc=0,y;
-				String s=L2.getText();
-				y=Integer.parseInt(s);
-				sonuc=y+1;
+				int sonuc = 0, y;
+				String s = L2.getText();
+				y = Integer.parseInt(s);
+				sonuc = y + 1;
 				L2.setText(String.valueOf(sonuc));
-				
-			
-			
-			
-			
+
 			}
 		});
 		b1.setBounds(30, 80, 80, 80);

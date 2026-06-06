@@ -28,6 +28,7 @@ public class ComboBox extends JFrame implements ActionListener {
       this.setVisible(true);
    }
 
+   @Override
    public void actionPerformed(ActionEvent e) {
       System.out.println(comboBox.getSelectedItem());
    }

@@ -1,4 +1,4 @@
-package algoritma;
+package algoritma.vizeders;
 
 public class M5 {
 

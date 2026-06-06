@@ -54,52 +54,52 @@ public class A6 extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JToggleButton tg = new JToggleButton("Aç/Kapa");
 		tg.setBounds(10, 11, 121, 23);
 		contentPane.add(tg);
-		
-JFormattedTextField ft = new JFormattedTextField(NumberFormat.getIntegerInstance());
-//ft.setText("100");	
-ft.setValue(3000);
-ft.setBounds(10, 88, 121, 20);
+
+		JFormattedTextField ft = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		// ft.setText("100");
+		ft.setValue(3000);
+		ft.setBounds(10, 88, 121, 20);
 		contentPane.add(ft);
-		
+
 		JTextPane tp = new JTextPane();
 		tp.setBounds(156, 11, 98, 55);
 		contentPane.add(tp);
-		
+
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(270, 122, 121, 58);
 		contentPane.add(editorPane);
-		
+
 		JSpinner spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(10, -12, 12, 1));
 		spinner.getValue();
 		spinner.setValue(30);
 		spinner.setBounds(10, 143, 58, 37);
 		contentPane.add(spinner);
-		
-		JList list = new JList();
+
+		JList<String> list = new JList<>();
 		list.setBounds(156, 122, 79, 58);
 		contentPane.add(list);
-		
+
 		table = new JTable();
 		table.setBounds(300, 50, 49, 29);
 		contentPane.add(table);
-		
+
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(257, 190, 146, 14);
 		contentPane.add(progressBar);
-		
+
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(396, 60, 17, 48);
 		contentPane.add(scrollBar);
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 191, 101, 37);
 		contentPane.add(separator);
-		
+
 		JSlider slider = new JSlider();
 		slider.setBounds(20, 215, 200, 26);
 		contentPane.add(slider);
@@ -109,17 +109,17 @@ ft.setBounds(10, 88, 121, 20);
 		JButton btnNewButton = new JButton("Durum");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-			if (tg.isSelected()) {l1.setText("Buton Aktif");}
-			else {l1.setText("Buton Seçilmedi");}
+
+				if (tg.isSelected()) {
+					l1.setText("Buton Aktif");
+				} else {
+					l1.setText("Buton Seçilmedi");
+				}
 			}
-			
-			
+
 		});
 		btnNewButton.setBounds(22, 45, 89, 23);
 		contentPane.add(btnNewButton);
-		
-		
+
 	}
 }

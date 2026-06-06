@@ -1,4 +1,4 @@
-package algoritma;
+package algoritma.vizeders;
 
 /*
  *1. Parametre olarak bir string değeri alan

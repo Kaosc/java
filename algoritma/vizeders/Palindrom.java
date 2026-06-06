@@ -1,4 +1,4 @@
-package algoritma;
+package algoritma.vizeders;
 
 public class Palindrom {
    static String[] splitString(String str) {

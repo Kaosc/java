@@ -40,30 +40,24 @@ public class Sayac extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel l1 = new JLabel("20");
+
+		JLabel l1 = new JLabel("5");
 		l1.setBounds(159, 69, 119, 109);
 		contentPane.add(l1);
-		
+
 		JButton btnNewButton = new JButton("Başlat");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-				for(int i=5;i>=0;i--) {
+
+				for (int i = 5; i >= 0; i--) {
 					l1.setText(String.valueOf(i));
 					try {
-						Thread.sleep(5000);
+						Thread.sleep(1000);
 					} catch (InterruptedException e1) {
-				
 						e1.printStackTrace();
 					}
-				
 				}
-				
-				
-				
-				
-				
+
 			}
 		});
 		btnNewButton.setBounds(139, 169, 89, 23);

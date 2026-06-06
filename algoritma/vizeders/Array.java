@@ -1,4 +1,4 @@
-package algoritma;
+package algoritma.vizeders;
 
 import uygulamalar.calculator.Operations;
 
