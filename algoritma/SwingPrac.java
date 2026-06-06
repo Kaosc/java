@@ -2,22 +2,135 @@ package algoritma;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 
-class Prac3 {
-   
+class Prac4 extends JFrame implements ActionListener {
+   String[][] data = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };
+
+   JTextArea ta = new JTextArea();
+   JCheckBox cb = new JCheckBox("Confirm");
+   JButton btn = new JButton("Submit");
+
+   public Prac4() {
+      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      this.setLayout(new FlowLayout());
+      this.setPreferredSize(new Dimension(200, 250));
+
+      ta.setPreferredSize(new Dimension(150, 150));
+      btn.addActionListener(this);
+
+      this.add(ta);
+      this.add(cb);
+      this.add(btn);
+
+      this.pack();
+      this.setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == btn) {
+         ta.setText(""); // Metin alanını temizle
+
+         if (cb.isSelected()) {
+            // Onay kutusu işaretli ise sadece köşegen elemanlarını yazdır
+            for (int i = 0; i < data.length; i++) {
+               for (int j = 0; j < data[i].length; j++) {
+                  if (i == j) {
+                     ta.append(data[i][j] + "  "); // Köşegen elemanını ekle
+                  } else {
+                     ta.append("  "); // Köşegen dışındaki elemanlar için tab ekle
+                  }
+               }
+               ta.append("\n"); // Satır sonu
+            }
+         } else {
+            // Onay kutusu işaretli değilse tüm matris elemanlarını yazdır
+            for (String[] row : data) {
+               for (String element : row) {
+                  ta.append(element + "  "); // Elemanı ekle
+               }
+               ta.append("\n"); // Satır sonu
+            }
+         }
+      }
+
+      this.pack();
+   }
+
+   public static void main(String[] args) {
+      new Prac4();
+   }
+}
+
+@SuppressWarnings({ "unchecked", "rawtypes" })
+
+class Prac3 extends JFrame implements ActionListener {
+   private String[] cities = { "Ankara", "Istanbul", "Antalya", "Bursa", "Izmir", "Konya", "Adana" };
+
+   JTextField tf = new JTextField();
+   JButton btn = new JButton("Submit");
+
+   DefaultListModel mod = new DefaultListModel();
+   JList list = new JList(mod);
+
+   public Prac3() {
+      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      this.setLayout(new FlowLayout());
+      this.setPreferredSize(new Dimension(200, 400));
+
+      tf.setPreferredSize(new Dimension(150, 40));
+      list.setPreferredSize(new Dimension(150, 250));
+      btn.addActionListener(this);
+
+      this.add(tf);
+      this.add(btn);
+      this.add(list);
+
+      this.pack();
+      this.setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == btn) {
+         mod.clear();
+
+         for (String c : cities) {
+            if (c.toLowerCase().contains(tf.getText().trim().toLowerCase())) {
+               mod.addElement(c);
+            }
+         }
+
+         if (mod.isEmpty()) {
+            mod.addElement("No city found");
+         }
+
+         this.pack();
+      }
+   }
+
+   public static void main(String[] args) {
+      new Prac3();
+   }
 }
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
