@@ -29,12 +29,11 @@ public class Date {
 		String s2 = "15/06/2026";
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate d = LocalDate.parse(s2, f); // 2026-06-15
-		
+
 		// Formatting dates and times
 		DateTimeFormatter fm = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm");
 		LocalDateTime dt = LocalDateTime.of(2000, 06, 07, 22, 30, 00);
 		String formattedDate = dt.format(fm); // "07-06-2000 22-30"
-
 
 		// Extracting int values from date and time
 		LocalDate date2 = LocalDate.of(2026, 3, 27);
@@ -49,7 +48,6 @@ public class Date {
 		int year = Integer.parseInt(s1.substring(0, 4)); // 2026
 		int month = Integer.parseInt(s1.substring(5, 7)); // 6
 		int day = Integer.parseInt(s1.substring(8, 10)); // 15
-
 
 		// Date calculations
 		LocalDate tomorrowDate = todayDate.plusDays(1); // Tomorrow's date
@@ -136,9 +134,9 @@ public class Date {
 		 */
 
 		LocalDate deliveryDate = todayDate.plusDays(15);
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-		System.out.println("Book order date: " + todayDate.format(format));
-		System.out.println("Delivery date: " + deliveryDate.format(format));
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+		System.out.println("Book order date: " + todayDate.format(fmt));
+		System.out.println("Delivery date: " + deliveryDate.format(fmt));
 	}
 
 }
