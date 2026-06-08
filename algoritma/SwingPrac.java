@@ -2,12 +2,13 @@ package algoritma;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.concurrent.Flow;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -17,10 +18,94 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
+
+class Prac5 extends JFrame implements ActionListener {
+   JRadioButton rbOfis = new JRadioButton("OFİS PC - 10000 TL");
+   JRadioButton rbOyun = new JRadioButton("OYUN PC - 20000 TL");
+   ButtonGroup rbGroup = new ButtonGroup();
+
+   JCheckBox cbMonitor = new JCheckBox("Monitör + 3000 TL");
+   JCheckBox cbKlavye = new JCheckBox("Klavye + 500 TL");
+   JCheckBox cbHeadset = new JCheckBox("Kulaklık + 800 TL");
+
+   JButton btn = new JButton("Hesapla");
+   JTextArea txtArea = new JTextArea("Özet");
+
+   public Prac5() {
+      this.setLayout(new FlowLayout());
+      this.setPreferredSize(new Dimension(300, 350));
+
+      rbOfis.setSelected(true);
+      rbGroup.add(rbOfis);
+      rbGroup.add(rbOyun);
+      txtArea.setPreferredSize(new Dimension(250, 200));
+      btn.addActionListener(this);
+
+      this.add(rbOfis);
+      this.add(rbOyun);
+
+      this.add(cbMonitor);
+      this.add(cbKlavye);
+      this.add(cbHeadset);
+
+      this.add(btn);
+      this.add(txtArea);
+
+      this.pack();
+      this.setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == btn) {
+         int total = 0;
+         String pc = "";
+
+         if (rbOfis.isSelected()) {
+            total = 10000;
+            pc = rbOfis.getText();
+         } else {
+            total = 20000;
+            pc = rbOyun.getText();
+         }
+
+         txtArea.setText("Seçilen kasa: " + pc);
+
+         if (cbMonitor.isSelected() || cbKlavye.isSelected() || cbHeadset.isSelected()) {
+            txtArea.append("\nEk donanımlar:");
+         }
+
+         if (cbMonitor.isSelected()) {
+            total += 3000;
+            txtArea.append("\n- " + cbMonitor.getText());
+         }
+
+         if (cbKlavye.isSelected()) {
+            total += 500;
+            txtArea.append("\n- " + cbKlavye.getText());
+         }
+
+         if (cbHeadset.isSelected()) {
+            total += 800;
+            txtArea.append("\n- " + cbHeadset.getText());
+         }
+
+         txtArea.append("\n------------------\n");
+         txtArea.append("TOPLAM TUTAR: " + total + " TL");
+
+         this.pack();
+      }
+   }
+
+   public static void main(String[] args) {
+      new Prac5();
+   }
+}
 
 class Prac4 extends JFrame implements ActionListener {
    String[][] data = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };
