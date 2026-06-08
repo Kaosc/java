@@ -1,14 +1,14 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class A7 extends JFrame {
+public class GuessNumber extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -20,7 +20,7 @@ public class A7 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					A7 frame = new A7();
+					GuessNumber frame = new GuessNumber();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class A7 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public A7() {
+	public GuessNumber() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -41,40 +41,26 @@ public class A7 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel L1 = new JLabel("SAYI");
-		L1.setBounds(30, 41, 46, 14);
-		contentPane.add(L1);
+		JButton btnNewButton = new JButton("OYUNA BAŞLA");
 
-		JLabel L2 = new JLabel("0");
-		L2.setBounds(86, 35, 76, 26);
-		contentPane.add(L2);
-
-		JButton b2 = new JButton("Azalt");
-		b2.addActionListener(new ActionListener() {
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String s;
+				int tahmin = (int) (Math.random() * 5) + 1;
 
-				int sonuc = 0, y;
-				String s = L2.getText();
-				y = Integer.parseInt(s);
-				sonuc = y - 1;
-				L2.setText(String.valueOf(sonuc));
+				for (int i = 1; i <= 3; i++) {
+					s = JOptionPane.showInputDialog("Değeri Giriniz (1-5) " + i + ". Tahmininiz: ");
+					if (tahmin == Integer.parseInt(s)) {
+						JOptionPane.showMessageDialog(null, "Tebrikler buldunuz: " + tahmin);
+						break;
+					} else {
+						JOptionPane.showMessageDialog(null, "Bulamadınız Tekrar Deneyin");
+					}
+				}
 			}
 		});
-		b2.setBounds(156, 80, 80, 80);
-		contentPane.add(b2);
 
-		JButton b1 = new JButton("Arttır");
-		b1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int sonuc = 0, y;
-				String s = L2.getText();
-				y = Integer.parseInt(s);
-				sonuc = y + 1;
-				L2.setText(String.valueOf(sonuc));
-
-			}
-		});
-		b1.setBounds(30, 80, 80, 80);
-		contentPane.add(b1);
+		btnNewButton.setBounds(151, 114, 121, 23);
+		contentPane.add(btnNewButton);
 	}
 }

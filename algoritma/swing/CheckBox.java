@@ -20,6 +20,7 @@ class CheckBoxFrame extends JFrame implements ActionListener {
 
       button.setText("Submit");
       button.addActionListener(this);
+      button.setEnabled(false);
 
       this.add(checkBox);
       this.add(button);
@@ -29,11 +30,17 @@ class CheckBoxFrame extends JFrame implements ActionListener {
 
    @Override
    public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == checkBox) {
+         if (checkBox.isSelected()) {
+            button.setEnabled(true);
+         } else {
+            button.setEnabled(false);
+         }
+      }
+
       if (e.getSource() == button) {
          if (checkBox.isSelected()) {
-            System.out.println("Not a robot!");
-         } else {
-            System.out.println("You are a robot!");
+            System.out.println("Challenge passed!");
          }
       }
    }

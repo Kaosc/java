@@ -7,10 +7,10 @@ import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MouseListenerr extends JFrame implements MouseListener {
+public class TMouseListener extends JFrame implements MouseListener {
    JLabel label = new JLabel("IDLE");
 
-   MouseListenerr() {
+   TMouseListener() {
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       this.setSize(500, 400);
       this.setLayout(new BorderLayout(10, 10));
@@ -53,6 +53,6 @@ public class MouseListenerr extends JFrame implements MouseListener {
    }
 
    public static void main(String[] args) {
-      new MouseListenerr();
+      new TMouseListener();
    }
 }

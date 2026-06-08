@@ -1,8 +1,8 @@
-package algoritma.vizeders;
+package algoritma;
 
 import java.util.Scanner;
 
-public class M4 {
+public class ScannerInt {
 
 	public void ort(double[] v, double[] f) {
 		double sonuc;
@@ -20,18 +20,17 @@ public class M4 {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int n = s.nextInt();
+
 		double[] vize = new double[n];
 		double[] fin = new double[n];
 
 		for (int i = 0; i < vize.length; i++) {
-
 			vize[i] = s.nextDouble();
 			fin[i] = s.nextDouble();
 		}
 
-		M4 m = new M4();
+		ScannerInt m = new ScannerInt();
 		m.ort(vize, fin);
 		s.close();
 	}
-
 }

@@ -1,4 +1,4 @@
-package algoritma.vizeders;
+package algoritma;
 
 @SuppressWarnings("unused")
 

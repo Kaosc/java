@@ -1,6 +1,5 @@
 package algoritma;
 
-import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -25,7 +24,7 @@ import javax.swing.JTextField;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 
 class Prac6 extends JFrame implements ActionListener {
-   JTextField tf = new JTextField("Kredi miktarı giriniz.");
+   JTextField tf = new JTextField();
    JComboBox cbTur = new JComboBox();
    JButton btn = new JButton("Hesapla");
    JTextArea txtArea = new JTextArea();
@@ -376,6 +375,5 @@ class Prac1 {
 
 public class SwingPrac {
    public static void main(String[] args) {
-
    }
 }

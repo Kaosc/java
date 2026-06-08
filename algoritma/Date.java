@@ -1,4 +1,4 @@
-package algoritma.vizeders;
+package algoritma;
 
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;

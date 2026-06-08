@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-// import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,7 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class A8 extends JFrame {
+public class MiniCalc extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -26,7 +25,7 @@ public class A8 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					A8 frame = new A8();
+					MiniCalc frame = new MiniCalc();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +37,8 @@ public class A8 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public A8() {
+	
+	public MiniCalc() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -68,31 +68,30 @@ public class A8 extends JFrame {
 		JButton btnNewButton = new JButton("İşlem Yap");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// JOptionPane.showMessageDialog(null,"Hoşgeldiniz");
-				// p.showMessageDialog(null, "Yeniden merhaba", "Karşılama", -1);
-				int a = Integer.parseInt(t1.getText());
-				int b = Integer.parseInt(t2.getText());
-				if ((String.valueOf(c1.getSelectedItem())).equals("Toplama")) {
-					int sonuc = 0;
-					sonuc = a + b;
-					l1.setText(String.valueOf(sonuc));
-					JOptionPane.showMessageDialog(null, String.valueOf(sonuc));
+				int a = 0, b = 0;
+
+				try {
+					a = Integer.parseInt(t1.getText());
+					b = Integer.parseInt(t2.getText());
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Lütfen sayı giriniz.");
+					return;
 				}
 
-				else if (c1.getSelectedIndex() == 1) {
+				if ((String.valueOf(c1.getSelectedItem())).equals("Toplama")) {
+					int sonuc = a + b;
+					l1.setText(String.valueOf(sonuc));
+					JOptionPane.showMessageDialog(null, String.valueOf(sonuc));
+				} else {
 					int sonuc = a - b;
 					l1.setText(String.valueOf(sonuc));
 					JOptionPane.showMessageDialog(null, String.valueOf(sonuc));
-
 				}
 
-				else {
-					l1.setText("Uygun işlem seçilmedi");
-				}
 			}
 		});
+
 		btnNewButton.setBounds(57, 151, 89, 23);
 		contentPane.add(btnNewButton);
-
 	}
 }
