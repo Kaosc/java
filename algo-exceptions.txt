@@ -1,0 +1,17 @@
+# NumberFormatException
+   - Occurs when an attempt is made to convert a string to a numeric type, but the string does not have the appropriate format.
+
+# ArrayIndexOutOfBoundsException
+   - Occurs when an attempt is made to access an array element with an index that is out of bounds (less than 0 or greater than or equal to the array length).
+
+# DateTimeException / DateTimeParseException
+   - Occurs when an error occurs while parsing or formatting date and time objects.
+
+# NullPointerException
+   - Occurs when an application attempts to use an object reference that has the null value.
+
+# StringIndexOutOfBoundsException
+   - Occurs when an attempt is made to access a character in a string with an index that is out of bounds (less than 0 or greater than or equal to the string length).
+
+# ClassCastException
+   - Occurs when an attempt is made to cast an object to a subclass of which it is not an instance.

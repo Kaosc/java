@@ -1,12 +1,12 @@
 package algoritma;
 
+import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.Flow;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -23,6 +23,70 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
+
+class Prac6 extends JFrame implements ActionListener {
+   JTextField tf = new JTextField("Kredi miktarı giriniz.");
+   JComboBox cbTur = new JComboBox();
+   JButton btn = new JButton("Hesapla");
+   JTextArea txtArea = new JTextArea();
+
+   public Prac6() {
+      this.setLayout(new FlowLayout());
+      this.setPreferredSize(new Dimension(250, 450));
+
+      tf.setPreferredSize(new Dimension(200, 30));
+
+      cbTur.addItem("Konut");
+      cbTur.addItem("İhtiyaç");
+      cbTur.addItem("Taşıt");
+
+      btn.addActionListener(this);
+      txtArea.setPreferredSize(new Dimension(200, 150));
+
+      this.add(tf);
+      this.add(cbTur);
+      this.add(btn);
+      this.add(txtArea);
+
+      this.pack();
+      this.setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == btn) {
+         int faiz = 0;
+         int miktar = 0;
+
+         try {
+            miktar = Integer.parseInt(tf.getText());
+         } catch (Exception err) {
+            JOptionPane.showMessageDialog(null, "Geçersiz kredi miktarı", "Hata", JOptionPane.ERROR_MESSAGE);
+            return;
+         }
+
+         if (cbTur.getSelectedItem().equals("Konut")) {
+            faiz = 15;
+         }
+         if (cbTur.getSelectedItem().equals("İhtiyaç")) {
+            faiz = 25;
+         }
+         if (cbTur.getSelectedItem().equals("Taşıt")) {
+            faiz = 20;
+         }
+
+         int totalPayBack = miktar + (miktar * faiz / 100);
+         int taksit = totalPayBack / 12;
+
+         txtArea.setText("Toplam Geri Ödeme Tutarı: " + totalPayBack);
+         txtArea.append(("\nTaksit tutarı: " + taksit));
+      }
+   }
+
+   public static void main(String[] args) {
+      new Prac6();
+   }
+}
 
 class Prac5 extends JFrame implements ActionListener {
    JRadioButton rbOfis = new JRadioButton("OFİS PC - 10000 TL");
