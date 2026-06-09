@@ -1,4 +1,4 @@
-package oop.finaldersler.exceptions;
+package oop.exceptions;
 
 class HataliSicaklikException extends Exception {
    public HataliSicaklikException(String mesaj) {

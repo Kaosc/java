@@ -1,4 +1,4 @@
-package oop.finaldersler.exceptions;
+package oop.exceptions;
 
 // Main exception
 class SistemException extends Exception {

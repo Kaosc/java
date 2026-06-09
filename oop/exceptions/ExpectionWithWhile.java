@@ -1,4 +1,4 @@
-package oop.finaldersler.exceptions;
+package oop.exceptions;
 
 import java.util.Scanner;
 

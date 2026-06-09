@@ -1,4 +1,4 @@
-package oop.finaldersler.regex;
+package oop.regex;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
