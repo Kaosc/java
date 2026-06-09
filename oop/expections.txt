@@ -1,0 +1,28 @@
+# InputMismatchException / InputMismatch
+   - This exception is thrown when the user inputs a value that does not match the expected type. For example, if the program expects an integer and the user inputs a string, an InputMismatchException will be thrown.
+# ArithmeticException
+   - This exception is thrown when an arithmetic error occurs, such as division by zero. For example, if the program attempts to divide a number by zero, an ArithmeticException will be thrown.
+# ArrayIndexOutOfBoundsException
+   - This exception is thrown when an attempt is made to access an array element with an index that is out of bounds. For example, if an array has a length of 5 and the program tries to access the element at index 10, an ArrayIndexOutOfBoundsException will be thrown.
+# FileNotFoundException
+   - This exception is thrown when an attempt is made to access a file that does not exist. For example, if the program tries to read from a file that is not present in the specified location, a FileNotFoundException will be thrown.
+# IOException
+   - This exception is thrown when an input or output operation fails or is interrupted. For example, if the program tries to read from a file and encounters an error, an IOException will be thrown.
+# NullPointerException
+   - This exception is thrown when an application attempts to use an object reference that has the null value. For example, if the program tries to call a method on a null object, a NullPointerException will be thrown.
+# SocketTimeoutException
+   - This exception is thrown when a socket operation times out. For example, if the program tries to connect to a server and the connection times out, a SocketTimeoutException will be thrown.
+# ClassNotFoundException
+   - This exception is thrown when an application tries to load a class through its string name but
+# NumberFormatException
+   - Occurs when an attempt is made to convert a string to a numeric type, but the string does not have the appropriate format.
+# ArrayIndexOutOfBoundsException
+   - Occurs when an attempt is made to access an array element with an index that is out of bounds (less than 0 or greater than or equal to the array length).
+# DateTimeException / DateTimeParseException
+   - Occurs when an error occurs while parsing or formatting date and time objects.
+# NullPointerException
+   - Occurs when an application attempts to use an object reference that has the null value.
+# StringIndexOutOfBoundsException
+   - Occurs when an attempt is made to access a character in a string with an index that is out of bounds (less than 0 or greater than or equal to the string length).
+# ClassCastException
+   - Occurs when an attempt is made to cast an object to a subclass of which it is not an instance.
