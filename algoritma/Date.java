@@ -5,6 +5,20 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.time.*;
 
+class Prac {
+	public static void main(String[] args) {
+		LocalDate today = LocalDate.now();
+		LocalDate cumhuriyet = LocalDate.of(1923, 10, 29);
+
+		long days = ChronoUnit.DAYS.between(cumhuriyet, today);
+		System.out.println(days);
+		long months = ChronoUnit.MONTHS.between(cumhuriyet, today);
+		System.out.println(months);
+		long years = ChronoUnit.YEARS.between(cumhuriyet, today);
+		System.out.println(years);
+	}
+}
+
 @SuppressWarnings("unused")
 
 public class Date {
