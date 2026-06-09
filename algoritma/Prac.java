@@ -2,6 +2,8 @@ package algoritma;
 
 import java.util.Scanner;
 
+@SuppressWarnings("resource")
+
 class Prac14 {
    public static void main(String[] args) {
       Scanner sc = new Scanner(System.in);
@@ -104,5 +106,4 @@ class Prac11 {
 }
 
 public class Prac {
-
 }

@@ -1,3 +1,4 @@
 - ItemListener
-- Mouse Listener
-- checkbox setMaximumRowCount(3);
+- CheckBox & ComboBox addItem method
+- Mouse Listener via JLabel
+- Checkbox setMaximumRowCount();
