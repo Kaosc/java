@@ -25,24 +25,21 @@ import java.io.*;
 public class SatisRaporu {
    public static void main(String[] args) throws Exception {
       // Arrays represent Product Name, Quantity Sold (adet), and Unit Price (fiyat)
-      String[] urun = { "Laptop", "Telefon", "Tablet", "Kulaklık" };
+      String[] urun = { "Laptop", "Telefon", "Tablet", "Kulaklik" };
       int[] adet = { 5, 12, 7, 20 };
       int[] fiyat = { 15000, 8000, 6000, 1500 };
 
-      BufferedWriter bw = new BufferedWriter(new FileWriter("satis_raporu.txt"));
-      int genelToplam = 0; // Total sales across all products
+      BufferedWriter bw = new BufferedWriter(new FileWriter("E:\\dev\\java\\oop\\vize-cevaplar\\satis_raporu.txt"));
+      int genelToplam = 0;
 
       for (int i = 0; i < urun.length; i++) {
-         // Calculate total sales for the current product
          int toplam = adet[i] * fiyat[i];
          genelToplam += toplam;
 
          if (toplam > 50000) {
-            bw.write("[YÜKSEK SATIŞ] ");
+            bw.write("[YUKSEK SATIS] ");
          }
 
-         // Write the report line format: "product - quantity adet - unit price TL -
-         // Total: X TL"
          bw.write(urun[i] + " - "
                + adet[i] + " adet - "
                + fiyat[i] + " TL - Toplam: " + toplam + " TL");
@@ -50,9 +47,7 @@ public class SatisRaporu {
          bw.newLine();
       }
 
-      // Write the general total at the bottom
       bw.write("GENEL TOPLAM: " + genelToplam + " TL");
-
       bw.close();
    }
 }

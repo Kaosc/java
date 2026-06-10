@@ -1,0 +1,5 @@
+2024-01-15 08:14:23 INFO Kullanici girisi basarili user=17
+2024-01-15 09:32:01 ERROR NullPointerException user=42
+2024-01-15 09:45:17 ERROR ArrayIndexOutOfBoundsException user=42
+2024-01-15 11:20:55 WARN Yavas sorgu tespit edildi user=7
+2024-01-15 11:58:44 ERROR SocketTimeoutException user=17

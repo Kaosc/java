@@ -17,34 +17,40 @@
 // yazmalıdır.) 
 
 import java.io.*;
+import java.time.LocalTime;
 
 public class LogAnaliz {
 
    // Finds the user with the most errors
    static void enCokHata() throws Exception {
-      BufferedReader br = new BufferedReader(new FileReader("log.txt"));
-      String satir;
+      BufferedReader br = new BufferedReader(new FileReader("E:\\dev\\java\\oop\\vize-cevaplar\\log.txt"));
+      String line;
 
       // Assuming a maximum of 100 users (indexed 0-99)
-      int[] say = new int[100];
+      int[] userErrorCounts = new int[100];
 
-      while ((satir = br.readLine()) != null) {
+      while ((line = br.readLine()) != null) {
          // Splitting the line by one or more whitespace characters
-         String[] p = satir.split("\\s+");
+         // 2024-01-15 11:58:44 ERROR SocketTimeoutException user=17
+         String[] p = line.split("\\s+");
 
          if (p[2].equals("ERROR")) {
             // Extracting user ID from the last element (e.g., "user=42")
-            int id = Integer.parseInt(p[p.length - 1].split("=")[1]);
-            say[id]++;
+            int id = Integer.parseInt(p[4].split("=")[1]);
+
+            // list[id] id is the user number, we are incrementing the error count for that
+            // index
+            // which the number in that index represents the number of errors for that user
+            userErrorCounts[id]++; // userErrorCounts[42] wili increment by 1 for each error by user 42
          }
       }
 
-      int max = 0, user = 0;
+      int maxErrCount = 0, user = 0;
 
-      for (int i = 0; i < say.length; i++) {
-         if (say[i] > max) {
-            max = say[i];
-            user = i;
+      for (int i = 0; i < userErrorCounts.length; i++) {
+         if (userErrorCounts[i] > maxErrCount) {
+            maxErrCount = userErrorCounts[i]; // assign new max error count
+            user = i; // i equals the user number.
          }
       }
 
@@ -53,22 +59,22 @@ public class LogAnaliz {
    }
 
    // Counts the number of requests between two given time strings (HH:MM:SS)
-   static void istekSay(String bas, String bit) throws Exception {
-      BufferedReader br = new BufferedReader(new FileReader("log.txt"));
-      String satir;
+   static void istekSay(String start, String end) throws Exception {
+      BufferedReader br = new BufferedReader(new FileReader("E:\\dev\\java\\oop\\vize-cevaplar\\log.txt"));
+      String line;
 
       int say = 0;
 
-      while ((satir = br.readLine()) != null) {
-         // Splitting the line by one or more whitespace characters
-         String[] p = satir.split("\\s+");
+      while ((line = br.readLine()) != null) {
+         String[] p = line.split("\\s+");
 
-         // The time stamp is expected to be in the second position (p[1])
-         String saat = p[1];
+         // 2024-01-15 11:58:44 ERROR SocketTimeoutException user=17
+         LocalTime saat = LocalTime.parse(p[1]);
 
-         // Time comparison: Check if current time >= start time AND current time <= end
-         // time
-         if (saat.compareTo(bas) >= 0 && saat.compareTo(bit) <= 0) {
+         LocalTime startTime = LocalTime.parse(start);
+         LocalTime endTime = LocalTime.parse(end);
+
+         if (saat.isAfter(startTime) && saat.isBefore(endTime)) {
             say++;
          }
       }
