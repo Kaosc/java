@@ -1,12 +1,14 @@
 package oop.exceptions;
 
+// Main class to demonstrate custom exception
 class HataliSicaklikException extends Exception {
    public HataliSicaklikException(String mesaj) {
       super(mesaj);
    }
 }
 
-class Oda {
+public class CustomException {
+
    public void sicaklikAyarla(int derece) throws HataliSicaklikException {
       if (derece < 18 || derece > 28) {
          throw new HataliSicaklikException("Sıcaklık 18-28 derece arasında olmalıdır!");
@@ -14,14 +16,12 @@ class Oda {
          System.out.println("Oda sıcaklığı " + derece + " derece olarak ayarlandı");
       }
    }
-}
 
-public class CustomException {
-   public static void main(String[] args){
+   public static void main(String[] args) {
       try {
-         Oda oda = new Oda();
-         oda.sicaklikAyarla(23);
-      } catch (Exception e) {
+         CustomException oda = new CustomException();
+         oda.sicaklikAyarla(10);
+      } catch (HataliSicaklikException e) {
          System.out.print(e.getMessage());
       }
    }

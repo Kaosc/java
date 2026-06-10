@@ -2,23 +2,31 @@ package oop.exceptions;
 
 import java.util.Scanner;
 
-class GecersizKarakterException extends Exception {
-   public GecersizKarakterException(String mesaj) {
-      super(mesaj);
+class PasswordException extends Exception {
+   public PasswordException(String msg) {
+      super(msg);
    }
 }
 
-class Kullanici {
-   public void sifreKontrol(String sifre) throws GecersizKarakterException {
-      if (sifre.matches("[0-9]+")) {
-         System.out.println("Sifre belirlendi");
-      } else {
-         throw new GecersizKarakterException("Şifre sadece rakamlardan oluşmalıdır");
-      }
+class PasswordLengthException extends Exception {
+   public PasswordLengthException(String msg) {
+      super(msg);
    }
 }
 
 public class ExpectionWithWhile {
+   public void sifreKontrol(String sifre) throws PasswordException, PasswordLengthException {
+      if (sifre.matches("[0-9]+")) { // Check for is password all numbers
+         if (sifre.matches("[0-9]{3,}")) { // Check for at least 3 number
+            System.out.println("Sifre belirlendi");
+         } else {
+            throw new PasswordLengthException("Password must be at least 3 char long.");
+         }
+      } else {
+         throw new PasswordException("Password must be numbers only.");
+      }
+   }
+
    public static void main(String[] args) {
       Scanner sc = new Scanner(System.in);
 
@@ -26,9 +34,9 @@ public class ExpectionWithWhile {
          try {
             System.out.print("\nŞifre giriniz: ");
             String sifre = sc.next();
-            new Kullanici().sifreKontrol(sifre);
+            new ExpectionWithWhile().sifreKontrol(sifre);
             break;
-         } catch (Exception e) {
+         } catch (PasswordException | PasswordLengthException e) {
             System.out.print(e.getMessage());
          }
       }

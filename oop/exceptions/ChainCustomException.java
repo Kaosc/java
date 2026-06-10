@@ -13,26 +13,27 @@ class SistemException extends Exception {
 
 // Sub exception of SistemException
 class InternetKesikException extends SistemException {
-   public InternetKesikException(String mesaj) {
-      super(mesaj);
+   public InternetKesikException() {
+      super("Ev internete bağlı değil");
    }
 }
 
 class EvGuvenlik {
-   public void internetKontrol(boolean isConnected) throws InternetKesikException {
-      if (isConnected) {
-         System.out.println("Sistem aktif edildi!");
-         return;
-      }
-      throw new InternetKesikException("Ev internete bağlı değil!");
-   }
-
    public void sistemAktifEt(boolean isConnected) throws SistemException {
       try {
          internetKontrol(isConnected);
       } catch (Exception e) {
          throw new SistemException("Güvenlik sistemi aktif edilemedi!", e);
       }
+   }
+
+   private void internetKontrol(boolean isConnected) throws InternetKesikException {
+      if (isConnected) {
+         System.out.println("Sistem aktif edildi!");
+         return;
+      }
+
+      throw new InternetKesikException();
    }
 }
 

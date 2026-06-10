@@ -1,0 +1,4 @@
+Merhaba, bana ali.yilmaz@gmail.com adresinden ulasabilirsiniz.
+Sistem kayitlari icin test_veri12@outlook.com adresi tanimlandi.
+Bu satırda ise hicbir e-posta adresi yer almamaktadir!
+Son olarak 123gecersiz@yandex.com kurallara uymaz cunku rakamla basliyor.

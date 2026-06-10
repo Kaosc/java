@@ -15,7 +15,7 @@ class TryCatch {
          System.out.print("Ödülünüz: " + odul);
       } catch (InputMismatchException e) {
          System.out.print("Sadece sayı giriniz!");
-      } catch (ArrayIndexOutOfBoundsException e) { // or IndexOutOfBoundsException
+      } catch (ArrayIndexOutOfBoundsException e) {
          System.out.print("1 ile 3 arasında sayı giriniz!");
       }
 

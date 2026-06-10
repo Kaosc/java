@@ -4,6 +4,8 @@
    - This exception is thrown when an arithmetic error occurs, such as division by zero. For example, if the program attempts to divide a number by zero, an ArithmeticException will be thrown.
 # ArrayIndexOutOfBoundsException
    - This exception is thrown when an attempt is made to access an array element with an index that is out of bounds. For example, if an array has a length of 5 and the program tries to access the element at index 10, an ArrayIndexOutOfBoundsException will be thrown.
+# IndexOutOfBoundsException
+   - This exception is thrown when an attempt is made to access a list, string, or other indexed collection with an index that is out of bounds. For example, if a list has a size of 3 and the program tries to access the element at index 5, an IndexOutOfBoundsException will be thrown.
 # FileNotFoundException
    - This exception is thrown when an attempt is made to access a file that does not exist. For example, if the program tries to read from a file that is not present in the specified location, a FileNotFoundException will be thrown.
 # IOException
@@ -16,8 +18,6 @@
    - This exception is thrown when an application tries to load a class through its string name but
 # NumberFormatException
    - Occurs when an attempt is made to convert a string to a numeric type, but the string does not have the appropriate format.
-# ArrayIndexOutOfBoundsException
-   - Occurs when an attempt is made to access an array element with an index that is out of bounds (less than 0 or greater than or equal to the array length).
 # DateTimeException / DateTimeParseException
    - Occurs when an error occurs while parsing or formatting date and time objects.
 # NullPointerException
